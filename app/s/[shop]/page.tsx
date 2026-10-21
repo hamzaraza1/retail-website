@@ -5,19 +5,16 @@ import { BudgetFinder } from "@/components/storefront/BudgetFinder";
 import { BrandPills, Hero, TrustStrip, VisitShop } from "@/components/storefront/HomeSections";
 import { ProductGrid } from "@/components/storefront/ProductCard";
 import { TextReviewCards, VideoReviewGrid } from "@/components/storefront/Reviews";
-import { ShopFooter } from "@/components/storefront/ShopFooter";
-import { ShopHeader } from "@/components/storefront/ShopHeader";
 import { Tabs } from "@/components/storefront/Tabs";
-import { getBrands, getCategories, getFinderPhones, getHomeTabs, getReviews, getShop } from "@/lib/data";
+import { getBrands, getFinderPhones, getHomeTabs, getReviews, getShop } from "@/lib/data";
 
 export default async function ShopHome({ params }: { params: Promise<{ shop: string }> }) {
   const shop = await getShop((await params).shop);
   if (!shop) notFound();
 
-  const [tabs, brands, categories, textReviews, videoReviews, finderPhones] = await Promise.all([
+  const [tabs, brands, textReviews, videoReviews, finderPhones] = await Promise.all([
     getHomeTabs(shop.id),
     getBrands(shop.id),
-    getCategories(shop.id),
     getReviews(shop.id, { type: "text" }),
     getReviews(shop.id, { type: "video" }),
     getFinderPhones(shop.id),
@@ -25,7 +22,6 @@ export default async function ShopHome({ params }: { params: Promise<{ shop: str
 
   return (
     <>
-      <ShopHeader shop={shop} search />
       <main>
         <Hero shop={shop} />
         <BrandPills brands={brands} />
@@ -83,7 +79,6 @@ export default async function ShopHome({ params }: { params: Promise<{ shop: str
 
         <VisitShop shop={shop} />
       </main>
-      <ShopFooter shop={shop} categories={categories} />
     </>
   );
 }

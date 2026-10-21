@@ -6,8 +6,7 @@ import { ProductGrid } from "@/components/storefront/ProductCard";
 import { ProductGallery } from "@/components/storefront/ProductGallery";
 import { StarIcon, CheckIcon } from "@/components/ui/icons";
 import { TextReviewCards } from "@/components/storefront/Reviews";
-import { ShopFooter } from "@/components/storefront/ShopFooter";
-import { ShopHeader } from "@/components/storefront/ShopHeader";
+import Link from "next/link";
 import {
   BOX_ITEMS,
   conditionLabel,
@@ -105,12 +104,26 @@ export default async function ProductPage({ params }: Props) {
         // JSON.stringify output with "<" escaped so a product name can't close the script tag.
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
       />
-      <ShopHeader
-        shop={shop}
-        back={product.category ? { href: `/c/${product.category.slug}`, label: product.category.name } : { href: "/", label: "Home" }}
-      />
+      <nav aria-label="Breadcrumb" className="mx-auto flex max-w-[1200px] flex-wrap items-center gap-2 px-4 pt-4 text-sm text-muted">
+        <Link href="/" className="flex min-h-11 items-center text-ink underline-offset-2 hover:underline">
+          Home
+        </Link>
+        {product.category && (
+          <>
+            <span aria-hidden="true">/</span>
+            <Link
+              href={`/c/${product.category.slug}`}
+              className="flex min-h-11 items-center text-ink underline-offset-2 hover:underline"
+            >
+              {product.category.name}
+            </Link>
+          </>
+        )}
+        <span aria-hidden="true">/</span>
+        <span aria-current="page" className="min-w-0 truncate">{product.model_name}</span>
+      </nav>
 
-      <main className="mx-auto grid max-w-[1200px] gap-10 px-4 pt-6 pb-8 md:grid-cols-2">
+      <main className="mx-auto grid max-w-[1200px] gap-10 px-4 pt-2 pb-8 md:grid-cols-2">
         <ProductGallery
           name={product.model_name}
           images={product.images}
@@ -248,7 +261,6 @@ export default async function ProductPage({ params }: Props) {
         )}
       </div>
 
-      <ShopFooter shop={shop} />
     </>
   );
 }

@@ -39,9 +39,6 @@ export const PhoneIcon = (p: IconProps) => (
 export const ArrowRightIcon = (p: IconProps) => (
   <Stroke {...p}><path d="M5 12h14M13 6l6 6-6 6" /></Stroke>
 );
-export const ChevronLeftIcon = (p: IconProps) => (
-  <Stroke {...p}><path d="M15 18l-6-6 6-6" /></Stroke>
-);
 export const CheckIcon = (p: IconProps) => (
   <Stroke {...p}><path d="M5 12l5 5 9-10" /></Stroke>
 );

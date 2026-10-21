@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Listing, parseListingParams } from "@/components/storefront/Listing";
-import { ShopFooter } from "@/components/storefront/ShopFooter";
-import { ShopHeader } from "@/components/storefront/ShopHeader";
 import { getBrands, getShop, listProducts } from "@/lib/data";
 
 // All products across categories. Target of the header search box and the home brand pills.
@@ -36,21 +34,17 @@ export default async function ProductsPage({ params, searchParams }: Props) {
   const title = filters.q ? `“${filters.q}” ke results` : "Saare products";
 
   return (
-    <>
-      <ShopHeader shop={shop} search />
-      <main>
-        <Listing
-          shop={shop}
-          title={title}
-          breadcrumb={filters.q ? "Search" : "Saare products"}
-          products={products}
-          brands={brands}
-          showPta={all.some((p) => p.variants.some((v) => v.pta_status && v.pta_status !== "na"))}
-          params={filters}
-          unit="products"
-        />
-      </main>
-      <ShopFooter shop={shop} />
-    </>
+    <main>
+      <Listing
+        shop={shop}
+        title={title}
+        breadcrumb={filters.q ? "Search" : "Saare products"}
+        products={products}
+        brands={brands}
+        showPta={all.some((p) => p.variants.some((v) => v.pta_status && v.pta_status !== "na"))}
+        params={filters}
+        unit="products"
+      />
+    </main>
   );
 }

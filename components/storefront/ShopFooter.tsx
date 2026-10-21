@@ -4,25 +4,16 @@ import type { Category, Shop } from "@/lib/supabase/types";
 
 const BRAND = "Shop Builder";
 
-export function ShopFooter({ shop, categories }: { shop: Shop; categories?: Category[] }) {
+export function ShopFooter({ shop, categories }: { shop: Shop; categories: Category[] }) {
   const year = new Date().getFullYear();
   const bottom = (
     <div className="flex flex-wrap justify-between gap-3 text-[13px] text-muted">
       <span>
         © {year} {shop.name}
-        {!categories && shop.address ? ` · ${shop.address.replace(/\n/g, ", ")}` : ""}
       </span>
       <span>Powered by {BRAND}</span>
     </div>
   );
-
-  if (!categories) {
-    return (
-      <footer className="border-t border-line bg-[#FAFBFC]">
-        <div className="mx-auto max-w-[1200px] px-4 py-6">{bottom}</div>
-      </footer>
-    );
-  }
 
   const link = "flex min-h-11 items-center text-ink hover:text-accent sm:min-h-0";
   return (

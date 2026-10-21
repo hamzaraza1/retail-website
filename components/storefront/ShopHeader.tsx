@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { whatsappLink } from "@/lib/whatsapp";
 import type { Shop } from "@/lib/supabase/types";
-import { ChevronLeftIcon, SearchIcon, WhatsAppIcon } from "@/components/ui/icons";
+import { SearchIcon, WhatsAppIcon } from "@/components/ui/icons";
 
 export function ShopLogo({ shop, size = 44 }: { shop: Shop; size?: number }) {
   if (shop.logo_url) {
@@ -33,55 +33,33 @@ export function WhatsAppButton({ shop, className = "" }: { shop: Shop; className
   );
 }
 
-/**
- * - default: logo + name, WhatsApp button (category pages)
- * - search: adds tagline and search box (home)
- * - back: "‹ Category" link on the left, logo on the right (product page)
- */
-export function ShopHeader({
-  shop,
-  search = false,
-  back,
-}: {
-  shop: Shop;
-  search?: boolean;
-  back?: { href: string; label: string };
-}) {
+/** Shop header used on every storefront page: logo + name, search, WhatsApp. */
+export function ShopHeader({ shop }: { shop: Shop }) {
   return (
     <header className="border-b border-line bg-white">
       <div className="mx-auto flex max-w-[1200px] flex-wrap items-center justify-between gap-3 px-4 py-3">
-        {back && (
-          <Link href={back.href} className="flex h-11 items-center gap-2 font-bold text-ink hover:text-accent">
-            <ChevronLeftIcon size={20} />
-            {back.label}
-          </Link>
-        )}
         <Link href="/" className="flex min-w-0 flex-1 basis-0 items-center gap-3 text-ink sm:flex-none sm:basis-auto">
-          <ShopLogo shop={shop} size={back ? 36 : 44} />
+          <ShopLogo shop={shop} />
           <span className="flex min-w-0 flex-col">
-            <span className={`font-display leading-tight font-extrabold ${back ? "text-lg" : "text-xl"}`}>
-              {shop.name}
-            </span>
-            {search && shop.tagline && <span className="truncate text-[13px] text-muted">{shop.tagline}</span>}
+            <span className="font-display text-xl leading-tight font-extrabold">{shop.name}</span>
+            {shop.tagline && <span className="truncate text-[13px] text-muted">{shop.tagline}</span>}
           </span>
         </Link>
-        {search && (
-          <form
-            action="/products"
-            role="search"
-            className="order-last flex h-11 w-full items-center gap-2 rounded-full bg-soft px-4 sm:order-none sm:w-auto sm:max-w-[420px] sm:flex-[1_1_260px]"
-          >
-            <SearchIcon className="shrink-0 text-muted" />
-            <input
-              type="search"
-              name="q"
-              aria-label="Phone dhoondein"
-              placeholder="iPhone 13, Galaxy A55…"
-              className="min-w-0 flex-1 bg-transparent text-[15px] text-ink outline-none placeholder:text-muted"
-            />
-          </form>
-        )}
-        {!back && <WhatsAppButton shop={shop} />}
+        <form
+          action="/products"
+          role="search"
+          className="order-last flex h-11 w-full items-center gap-2 rounded-full bg-soft px-4 sm:order-none sm:w-auto sm:max-w-[420px] sm:flex-[1_1_260px]"
+        >
+          <SearchIcon className="shrink-0 text-muted" />
+          <input
+            type="search"
+            name="q"
+            aria-label="Phone dhoondein"
+            placeholder="iPhone 13, Galaxy A55…"
+            className="min-w-0 flex-1 bg-transparent text-[15px] text-ink outline-none placeholder:text-muted"
+          />
+        </form>
+        <WhatsAppButton shop={shop} />
       </div>
     </header>
   );

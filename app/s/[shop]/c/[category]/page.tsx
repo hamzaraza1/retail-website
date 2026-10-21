@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Listing, parseListingParams } from "@/components/storefront/Listing";
-import { ShopFooter } from "@/components/storefront/ShopFooter";
-import { ShopHeader } from "@/components/storefront/ShopHeader";
 import { getBrands, getCategory, getShop, listProducts } from "@/lib/data";
 
 type Props = {
@@ -38,22 +36,18 @@ export default async function CategoryPage({ params, searchParams }: Props) {
   const isPhones = all.some((p) => p.variants.some((v) => v.storage));
 
   return (
-    <>
-      <ShopHeader shop={shop} />
-      <main>
-        <Listing
-          shop={shop}
-          title={category.name}
-          description={category.description}
-          breadcrumb={category.name}
-          products={products}
-          brands={brands}
-          showPta={all.some((p) => p.variants.some((v) => v.pta_status && v.pta_status !== "na"))}
-          params={filters}
-          unit={isPhones ? "phones" : "items"}
-        />
-      </main>
-      <ShopFooter shop={shop} />
-    </>
+    <main>
+      <Listing
+        shop={shop}
+        title={category.name}
+        description={category.description}
+        breadcrumb={category.name}
+        products={products}
+        brands={brands}
+        showPta={all.some((p) => p.variants.some((v) => v.pta_status && v.pta_status !== "na"))}
+        params={filters}
+        unit={isPhones ? "phones" : "items"}
+      />
+    </main>
   );
 }
