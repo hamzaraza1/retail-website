@@ -11,6 +11,7 @@ import { ShopHeader } from "@/components/storefront/ShopHeader";
 import {
   BOX_ITEMS,
   conditionLabel,
+  highlightSpecs,
   productColors,
   productFeatures,
   productSpecs,
@@ -134,6 +135,8 @@ export default async function ProductPage({ params }: Props) {
           url={url}
           variants={product.variants}
           colors={productColors(product)}
+          highlights={highlightSpecs(product)}
+          batteryHealth={isUsed ? product.battery_health : null}
         />
       </main>
 

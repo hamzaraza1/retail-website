@@ -14,7 +14,7 @@ import type {
   Review,
   Shop,
 } from "@/lib/supabase/types";
-import { defaultVariant, effectivePrice } from "@/lib/catalog";
+import { conditionLabel, defaultVariant, effectivePrice, specValue } from "@/lib/catalog";
 import * as demo from "./demo";
 
 export type ProductFull = Product & {
@@ -172,4 +172,45 @@ export async function recordOrderClick(entry: {
 
 export async function listAllProductSlugs(shopId: string) {
   return visibleProducts(shopId).map((p) => ({ slug: p.slug, created_at: p.created_at }));
+}
+
+export type FinderPhone = {
+  id: string;
+  slug: string;
+  name: string;
+  condition: string;
+  /** In-stock price points, cheapest first. A phone fits a budget if any option does. */
+  options: { price: number; pta: PtaStatus; memory: string }[];
+  batteryHealth: number | null;
+  specs: { processor: string | null; battery: string | null; display: string | null; camera: string | null };
+};
+
+/** In-stock phones (products with storage variants) for the home budget finder + compare. */
+export async function getFinderPhones(shopId: string): Promise<FinderPhone[]> {
+  const out: FinderPhone[] = [];
+  for (const p of (await listProducts(shopId)).filter((x) => x.variants.some((v) => v.storage))) {
+    const stock = p.variants.filter((v) => v.in_stock);
+    if (!stock.length) continue;
+    out.push({
+      id: p.id,
+      slug: p.slug,
+      name: p.model_name,
+      condition: conditionLabel(p),
+      options: stock
+        .map((v) => ({
+          price: effectivePrice(v),
+          pta: v.pta_status ?? "na",
+          memory: v.ram ? `${v.ram} / ${v.storage}` : (v.storage ?? ""),
+        }))
+        .sort((a, b) => a.price - b.price),
+      batteryHealth: p.condition === "used" ? p.battery_health : null,
+      specs: {
+        processor: specValue(p, "Processor"),
+        battery: specValue(p, "Battery"),
+        display: specValue(p, "Display"),
+        camera: specValue(p, "Main camera"),
+      },
+    });
+  }
+  return out;
 }

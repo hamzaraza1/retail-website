@@ -1,24 +1,26 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRightIcon } from "@/components/ui/icons";
+import { BudgetFinder } from "@/components/storefront/BudgetFinder";
 import { BrandPills, Hero, TrustStrip, VisitShop } from "@/components/storefront/HomeSections";
 import { ProductGrid } from "@/components/storefront/ProductCard";
 import { TextReviewCards, VideoReviewGrid } from "@/components/storefront/Reviews";
 import { ShopFooter } from "@/components/storefront/ShopFooter";
 import { ShopHeader } from "@/components/storefront/ShopHeader";
 import { Tabs } from "@/components/storefront/Tabs";
-import { getBrands, getCategories, getHomeTabs, getReviews, getShop } from "@/lib/data";
+import { getBrands, getCategories, getFinderPhones, getHomeTabs, getReviews, getShop } from "@/lib/data";
 
 export default async function ShopHome({ params }: { params: Promise<{ shop: string }> }) {
   const shop = await getShop((await params).shop);
   if (!shop) notFound();
 
-  const [tabs, brands, categories, textReviews, videoReviews] = await Promise.all([
+  const [tabs, brands, categories, textReviews, videoReviews, finderPhones] = await Promise.all([
     getHomeTabs(shop.id),
     getBrands(shop.id),
     getCategories(shop.id),
     getReviews(shop.id, { type: "text" }),
     getReviews(shop.id, { type: "video" }),
+    getFinderPhones(shop.id),
   ]);
 
   return (
@@ -50,6 +52,8 @@ export default async function ShopHome({ params }: { params: Promise<{ shop: str
             />
           </section>
         )}
+
+        {finderPhones.length > 1 && <BudgetFinder phones={finderPhones} whatsappNumber={shop.whatsapp_number} />}
 
         <TrustStrip shop={shop} />
 

@@ -142,17 +142,32 @@ update public.products set
     {"title":"5G support","detail":"Future ke networks ke liye tayyar"},
     {"title":"Face ID","detail":"Fully working, tested"}
   ]',
-  specs = '[
-    {"key":"Display","value":"6.1 inch OLED"},
-    {"key":"Processor","value":"A15 Bionic"},
-    {"key":"Camera","value":"12MP + 12MP, 12MP front"},
-    {"key":"Battery health","value":"87%"},
-    {"key":"Condition","value":"Used 10/10, koi scratch nahi"},
-    {"key":"Box","value":"With box (original)"}
-  ]',
   repair_history = 'Koi repair nahi, original parts',
   tiktok_video_url = 'https://www.tiktok.com/'
 where shop_id = '00000000-0000-0000-0000-00000000b001' and slug = 'iphone-13-used';
+
+-- Key specs shown on product pages and in the home budget finder / compare.
+update public.products p set specs = s.specs::jsonb
+from (values
+  ('samsung-galaxy-a55-5g', '[{"key":"Processor","value":"Exynos 1480"},{"key":"Battery","value":"5000mAh, 25W fast charging"},{"key":"Display","value":"6.6\" Super AMOLED, 120Hz"},{"key":"Main camera","value":"50MP + 12MP ultra-wide + 5MP macro"},{"key":"Front camera","value":"32MP"},{"key":"OS","value":"Android 14 (One UI 6.1)"},{"key":"Network","value":"5G"}]'),
+  ('infinix-note-40', '[{"key":"Processor","value":"Helio G99 Ultimate"},{"key":"Battery","value":"5000mAh, 45W + 20W wireless"},{"key":"Display","value":"6.78\" AMOLED, 120Hz"},{"key":"Main camera","value":"108MP + 2MP + 2MP"},{"key":"Front camera","value":"32MP"},{"key":"OS","value":"Android 14 (XOS 14)"},{"key":"Network","value":"4G"}]'),
+  ('tecno-spark-30', '[{"key":"Processor","value":"Helio G91"},{"key":"Battery","value":"5000mAh, 18W"},{"key":"Display","value":"6.78\" IPS LCD, 90Hz"},{"key":"Main camera","value":"64MP"},{"key":"Front camera","value":"13MP"},{"key":"OS","value":"Android 14 (HiOS 14)"},{"key":"Network","value":"4G"}]'),
+  ('redmi-note-14', '[{"key":"Processor","value":"Helio G99-Ultra"},{"key":"Battery","value":"5500mAh, 33W"},{"key":"Display","value":"6.67\" AMOLED, 120Hz"},{"key":"Main camera","value":"108MP + 2MP + 2MP"},{"key":"Front camera","value":"20MP"},{"key":"OS","value":"Android 14 (HyperOS)"},{"key":"Network","value":"4G"}]'),
+  ('iphone-13-used', '[{"key":"Processor","value":"A15 Bionic"},{"key":"Battery","value":"3240mAh, 20W"},{"key":"Display","value":"6.1\" Super Retina XDR OLED"},{"key":"Main camera","value":"12MP + 12MP ultra-wide"},{"key":"Front camera","value":"12MP"},{"key":"OS","value":"iOS"},{"key":"Network","value":"5G"}]'),
+  ('iphone-12-pro-used', '[{"key":"Processor","value":"A14 Bionic"},{"key":"Battery","value":"2815mAh, 20W"},{"key":"Display","value":"6.1\" Super Retina XDR OLED"},{"key":"Main camera","value":"12MP x3 (wide, ultra-wide, 2x tele) + LiDAR"},{"key":"Front camera","value":"12MP"},{"key":"OS","value":"iOS"},{"key":"Network","value":"5G"}]'),
+  ('iphone-11-used', '[{"key":"Processor","value":"A13 Bionic"},{"key":"Battery","value":"3110mAh, 18W"},{"key":"Display","value":"6.1\" Liquid Retina LCD"},{"key":"Main camera","value":"12MP + 12MP ultra-wide"},{"key":"Front camera","value":"12MP"},{"key":"OS","value":"iOS"},{"key":"Network","value":"4G"}]'),
+  ('iphone-xs-max-used', '[{"key":"Processor","value":"A12 Bionic"},{"key":"Battery","value":"3174mAh, 18W"},{"key":"Display","value":"6.5\" Super Retina OLED"},{"key":"Main camera","value":"12MP + 12MP 2x tele"},{"key":"Front camera","value":"7MP"},{"key":"OS","value":"iOS"},{"key":"Network","value":"4G"}]'),
+  ('galaxy-s22-ultra-used', '[{"key":"Processor","value":"Snapdragon 8 Gen 1"},{"key":"Battery","value":"5000mAh, 45W"},{"key":"Display","value":"6.8\" Dynamic AMOLED 2X, 120Hz"},{"key":"Main camera","value":"108MP + 12MP ultra-wide + 10MP 3x + 10MP 10x"},{"key":"Front camera","value":"40MP"},{"key":"OS","value":"Android (One UI)"},{"key":"Network","value":"5G"},{"key":"S Pen","value":"Built-in"}]'),
+  ('galaxy-s21-fe-used', '[{"key":"Processor","value":"Snapdragon 888"},{"key":"Battery","value":"4500mAh, 25W"},{"key":"Display","value":"6.4\" Dynamic AMOLED 2X, 120Hz"},{"key":"Main camera","value":"12MP + 12MP ultra-wide + 8MP 3x tele"},{"key":"Front camera","value":"32MP"},{"key":"OS","value":"Android (One UI)"},{"key":"Network","value":"5G"}]'),
+  ('google-pixel-7-used', '[{"key":"Processor","value":"Google Tensor G2"},{"key":"Battery","value":"4355mAh, 20W"},{"key":"Display","value":"6.3\" OLED, 90Hz"},{"key":"Main camera","value":"50MP + 12MP ultra-wide"},{"key":"Front camera","value":"10.8MP"},{"key":"OS","value":"Android"},{"key":"Network","value":"5G"}]'),
+  ('google-pixel-6a-used', '[{"key":"Processor","value":"Google Tensor"},{"key":"Battery","value":"4410mAh, 18W"},{"key":"Display","value":"6.1\" OLED, 60Hz"},{"key":"Main camera","value":"12.2MP + 12MP ultra-wide"},{"key":"Front camera","value":"8MP"},{"key":"OS","value":"Android"},{"key":"Network","value":"5G"}]'),
+  ('25w-fast-charger', '[{"key":"Output","value":"25W"},{"key":"Port","value":"USB Type-C"},{"key":"Fast charging","value":"PD 3.0 / PPS"},{"key":"Warranty","value":"1 saal"}]'),
+  ('wireless-earbuds', '[{"key":"Battery","value":"30 ghante (case ke saath)"},{"key":"Noise cancelling","value":"ANC"},{"key":"Bluetooth","value":"5.3"},{"key":"Charging","value":"USB Type-C"}]'),
+  ('iphone-13-silicone-cover', '[{"key":"Fit","value":"iPhone 13"},{"key":"Material","value":"Silicone"},{"key":"Colors","value":"6 colors"}]'),
+  ('10000mah-power-bank', '[{"key":"Capacity","value":"10,000mAh"},{"key":"Output","value":"20W PD"},{"key":"Ports","value":"USB-C + USB-A"}]')
+) as s(slug, specs)
+where p.shop_id = '00000000-0000-0000-0000-00000000b001' and p.slug = s.slug;
+
 
 -- ---------------------------------------------------------------------------
 -- Variants (price depends on storage + PTA)

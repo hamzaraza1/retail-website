@@ -88,6 +88,28 @@ export const categories: Category[] = [
   },
 ];
 
+// Published manufacturer specs (typical values; the shopkeeper confirms per unit).
+// Keys used for the "Phone ki details" tiles: Processor, Battery, Display, Main camera, Front camera.
+type SpecRow = [key: string, value: string];
+const SPECS: Record<string, SpecRow[]> = {
+  "samsung-galaxy-a55-5g": [["Processor", "Exynos 1480"], ["Battery", "5000mAh, 25W fast charging"], ["Display", '6.6" Super AMOLED, 120Hz'], ["Main camera", "50MP + 12MP ultra-wide + 5MP macro"], ["Front camera", "32MP"], ["OS", "Android 14 (One UI 6.1)"], ["Network", "5G"]],
+  "infinix-note-40": [["Processor", "Helio G99 Ultimate"], ["Battery", "5000mAh, 45W + 20W wireless"], ["Display", '6.78" AMOLED, 120Hz'], ["Main camera", "108MP + 2MP + 2MP"], ["Front camera", "32MP"], ["OS", "Android 14 (XOS 14)"], ["Network", "4G"]],
+  "tecno-spark-30": [["Processor", "Helio G91"], ["Battery", "5000mAh, 18W"], ["Display", '6.78" IPS LCD, 90Hz'], ["Main camera", "64MP"], ["Front camera", "13MP"], ["OS", "Android 14 (HiOS 14)"], ["Network", "4G"]],
+  "redmi-note-14": [["Processor", "Helio G99-Ultra"], ["Battery", "5500mAh, 33W"], ["Display", '6.67" AMOLED, 120Hz'], ["Main camera", "108MP + 2MP + 2MP"], ["Front camera", "20MP"], ["OS", "Android 14 (HyperOS)"], ["Network", "4G"]],
+  "iphone-13-used": [["Processor", "A15 Bionic"], ["Battery", "3240mAh, 20W"], ["Display", '6.1" Super Retina XDR OLED'], ["Main camera", "12MP + 12MP ultra-wide"], ["Front camera", "12MP"], ["OS", "iOS"], ["Network", "5G"]],
+  "iphone-12-pro-used": [["Processor", "A14 Bionic"], ["Battery", "2815mAh, 20W"], ["Display", '6.1" Super Retina XDR OLED'], ["Main camera", "12MP x3 (wide, ultra-wide, 2x tele) + LiDAR"], ["Front camera", "12MP"], ["OS", "iOS"], ["Network", "5G"]],
+  "iphone-11-used": [["Processor", "A13 Bionic"], ["Battery", "3110mAh, 18W"], ["Display", '6.1" Liquid Retina LCD'], ["Main camera", "12MP + 12MP ultra-wide"], ["Front camera", "12MP"], ["OS", "iOS"], ["Network", "4G"]],
+  "iphone-xs-max-used": [["Processor", "A12 Bionic"], ["Battery", "3174mAh, 18W"], ["Display", '6.5" Super Retina OLED'], ["Main camera", "12MP + 12MP 2x tele"], ["Front camera", "7MP"], ["OS", "iOS"], ["Network", "4G"]],
+  "galaxy-s22-ultra-used": [["Processor", "Snapdragon 8 Gen 1"], ["Battery", "5000mAh, 45W"], ["Display", '6.8" Dynamic AMOLED 2X, 120Hz'], ["Main camera", "108MP + 12MP ultra-wide + 10MP 3x + 10MP 10x"], ["Front camera", "40MP"], ["OS", "Android (One UI)"], ["Network", "5G"], ["S Pen", "Built-in"]],
+  "galaxy-s21-fe-used": [["Processor", "Snapdragon 888"], ["Battery", "4500mAh, 25W"], ["Display", '6.4" Dynamic AMOLED 2X, 120Hz'], ["Main camera", "12MP + 12MP ultra-wide + 8MP 3x tele"], ["Front camera", "32MP"], ["OS", "Android (One UI)"], ["Network", "5G"]],
+  "google-pixel-7-used": [["Processor", "Google Tensor G2"], ["Battery", "4355mAh, 20W"], ["Display", '6.3" OLED, 90Hz'], ["Main camera", "50MP + 12MP ultra-wide"], ["Front camera", "10.8MP"], ["OS", "Android"], ["Network", "5G"]],
+  "google-pixel-6a-used": [["Processor", "Google Tensor"], ["Battery", "4410mAh, 18W"], ["Display", '6.1" OLED, 60Hz'], ["Main camera", "12.2MP + 12MP ultra-wide"], ["Front camera", "8MP"], ["OS", "Android"], ["Network", "5G"]],
+  "25w-fast-charger": [["Output", "25W"], ["Port", "USB Type-C"], ["Fast charging", "PD 3.0 / PPS"], ["Warranty", "1 saal"]],
+  "wireless-earbuds": [["Battery", "30 ghante (case ke saath)"], ["Noise cancelling", "ANC"], ["Bluetooth", "5.3"], ["Charging", "USB Type-C"]],
+  "iphone-13-silicone-cover": [["Fit", "iPhone 13"], ["Material", "Silicone"], ["Colors", "6 colors"]],
+  "10000mah-power-bank": [["Capacity", "10,000mAh"], ["Output", "20W PD"], ["Ports", "USB-C + USB-A"]],
+};
+
 type ProductSeed = Partial<Product> &
   Pick<Product, "category_id" | "brand" | "model_name" | "slug">;
 
@@ -105,7 +127,7 @@ function product(seed: ProductSeed, index: number): Product {
     warranty: null,
     colors: [],
     features: [],
-    specs: [],
+    specs: (SPECS[seed.slug] ?? []).map(([key, value]) => ({ key, value })),
     tiktok_video_url: null,
     is_featured: false,
     is_visible: true,
@@ -150,14 +172,6 @@ export const products: Product[] = [
       { title: "Dual 12MP camera", detail: "Night mode aur Cinematic video" },
       { title: "5G support", detail: "Future ke networks ke liye tayyar" },
       { title: "Face ID", detail: "Fully working, tested" },
-    ],
-    specs: [
-      { key: "Display", value: "6.1 inch OLED" },
-      { key: "Processor", value: "A15 Bionic" },
-      { key: "Camera", value: "12MP + 12MP, 12MP front" },
-      { key: "Battery health", value: "87%" },
-      { key: "Condition", value: "Used 10/10, koi scratch nahi" },
-      { key: "Box", value: "With box (original)" },
     ],
   },
   { category_id: "cat-used", brand: "Apple", model_name: "iPhone 12 Pro", slug: "iphone-12-pro-used", ...usedPhone, condition_rating: "9/10", battery_health: 82, box_contents: ["cable"], is_featured: true },

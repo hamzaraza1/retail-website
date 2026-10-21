@@ -78,3 +78,16 @@ export const BOX_ITEMS: { id: string; label: string }[] = [
 export function tiktokVideoId(url: string | null | undefined): string | null {
   return url?.match(/\/video\/(\d+)/)?.[1] ?? null;
 }
+
+const HIGHLIGHT_KEYS = ["Processor", "Battery", "Display", "Main camera", "Front camera"];
+
+/** Specs a buyer checks first. Phones: the HIGHLIGHT_KEYS present; anything else: first 4 specs. */
+export function highlightSpecs(p: Product): Spec[] {
+  const specs = productSpecs(p);
+  const picked = HIGHLIGHT_KEYS.map((k) => specs.find((s) => s.key === k)).filter((s): s is Spec => !!s);
+  return picked.length ? picked : specs.slice(0, 4);
+}
+
+export function specValue(p: Product, key: string): string | null {
+  return productSpecs(p).find((s) => s.key === key)?.value ?? null;
+}

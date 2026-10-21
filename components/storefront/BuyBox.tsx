@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { defaultVariant, effectivePrice, PTA_LONG, PTA_SHORT, type Color } from "@/lib/catalog";
+import { defaultVariant, effectivePrice, memoryLabel, PTA_LONG, PTA_SHORT, type Color, type Spec } from "@/lib/catalog";
 import { formatPrice } from "@/lib/format";
 import { orderMessage, whatsappLink } from "@/lib/whatsapp";
 import type { ProductVariant, PtaStatus } from "@/lib/supabase/types";
@@ -19,6 +19,9 @@ type Props = {
   url: string;
   variants: ProductVariant[];
   colors: Color[];
+  /** Key specs shown as tiles under the buttons (processor, battery, display…). */
+  highlights: Spec[];
+  batteryHealth: number | null;
 };
 
 const uniq = <T,>(xs: T[]) => [...new Set(xs)];
@@ -55,6 +58,12 @@ export function BuyBox(p: Props) {
   const options = [variant?.storage, variant?.pta_status ? PTA_SHORT[variant.pta_status] : ""].filter(
     (x): x is string => !!x,
   );
+  const memory = memoryLabel(variant);
+  const details = [
+    ...(memory ? [{ key: "RAM / Storage", value: memory }] : []),
+    ...(p.batteryHealth != null ? [{ key: "Battery health", value: `${p.batteryHealth}%` }] : []),
+    ...p.highlights,
+  ].map((d) => ({ ...d, wide: d.value.length > 22 }));
   const message = price !== null ? orderMessage({ name: p.name, options, price, url: p.url }) : "";
   const waHref = whatsappLink(
     p.whatsappNumber,
@@ -180,13 +189,20 @@ export function BuyBox(p: Props) {
         <p className="m-0 text-center text-[13px] text-muted">Color, delivery aur payment WhatsApp par tay hoga</p>
       </div>
 
-      {inStock && message && (
-        <div className="flex flex-col gap-2">
-          <p className="m-0 text-[13px] font-bold tracking-wide text-muted uppercase">Shopkeeper ko yeh message jayega</p>
-          <p className="m-0 max-w-[360px] self-start rounded-xl rounded-bl-sm bg-[#E6F4EA] px-3.5 py-3 text-sm leading-relaxed break-words whitespace-pre-line">
-            {message}
-          </p>
-        </div>
+      {(details.length > 0) && (
+        <section aria-labelledby="phone-details" className="flex flex-col gap-2.5">
+          <h2 id="phone-details" className="m-0 text-[13px] font-bold tracking-wide text-muted uppercase">
+            {storages.length ? "Phone ki details" : "Details"}
+          </h2>
+          <dl className="m-0 grid grid-cols-2 gap-2">
+            {details.map((d) => (
+              <div key={d.key} className={`flex flex-col gap-0.5 rounded-input bg-soft px-3.5 py-3 ${d.wide ? "col-span-2" : ""}`}>
+                <dt className="text-[12px] text-muted">{d.key}</dt>
+                <dd className="m-0 text-[15px] leading-snug font-bold">{d.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </section>
       )}
     </div>
   );
