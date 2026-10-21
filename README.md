@@ -14,7 +14,7 @@ A multi-tenant shop website builder for local Karachi retailers, starting with m
 |---|---|---|
 | 0 | Setup: Next.js, Tailwind tokens, Supabase clients, schema, RLS, seed | ✅ |
 | 1 | Storefront: subdomain middleware, Home / Category / Product, WhatsApp flow, SEO | ✅ demo data |
-| 2 | Dashboard core | |
+| 2 | Dashboard: login, products (photos, variants, specs), categories, shop settings, super-admin | ✅ demo mode |
 | 3 | Orders, reviews, stats | |
 | 4 | Pilot | |
 
@@ -27,7 +27,18 @@ npm run dev
 
 Then open the demo shop at **http://zaibmobiles.localhost:3000** (Chrome, Edge and Firefox resolve `*.localhost` to your machine). Storefront pages are only served on a shop subdomain.
 
-The storefront currently reads the built-in demo shop from `lib/data/demo.ts`, so no database or `.env.local` is needed to preview it. All reads go through `lib/data/index.ts`; connecting a database later means replacing the bodies of those functions only.
+The app runs in **demo mode** for now: data lives in an in-memory store (`lib/data/store.ts`) seeded from `lib/data/demo.ts`, so no database or `.env.local` is needed. Dashboard edits show on the storefront immediately; restarting the server resets everything to the demo data. All reads go through `lib/data/index.ts` and all writes through `lib/data/mutations.ts`, so connecting a database later means replacing those two files.
+
+### Dashboard
+
+Open **http://app.localhost:3000/login**. There is no sign-up: the super-admin creates every shop and its owner account.
+
+| Login | Password | Lands on |
+|---|---|---|
+| `demo@zaibmobiles.test` | `demo12345` | `/dashboard` (Zaib Mobiles owner) |
+| `admin@yourbrand.pk` | `admin12345` | `/admin` (create shops, suspend, reset passwords) |
+
+`npm run start` (production mode) needs `SESSION_SECRET` set; `npm run dev` uses a dev-only fallback.
 
 | URL | Page |
 |---|---|
@@ -74,11 +85,17 @@ npx supabase gen types typescript --linked > lib/supabase/types.ts
 ## Layout
 
 ```
-middleware.ts          <shop>.<domain>/… → /s/<shop>/…
+middleware.ts          <shop>.<domain>/… → /s/<shop>/…; app.<domain> → login/dashboard/admin
 app/s/[shop]/          storefront: home, c/[category], p/[product] (+ og image), products, sitemap, robots
+app/(app)/login, forgot-password   shopkeeper/admin login (no sign-up)
+app/(app)/dashboard/   overview, products (+ new/[id]), categories, settings; orders/reviews in Phase 3
+app/(app)/admin/       super-admin: create shop + owner, suspend, reset password
 app/api/order-click/   records a pending order + whatsapp_click (logs only in demo mode)
 components/storefront/ storefront UI
-lib/data/              storefront read API + demo shop data
+components/dashboard/  dashboard + admin UI
+lib/data/              read API (index.ts), writes (mutations.ts), validation (schemas.ts), demo store
+lib/auth.ts            password hashing + signed session cookie, requireOwner / requireAdmin
+lib/spec-templates.ts  built-in specs for popular phones (auto-fill in the product form)
 lib/catalog.ts         product display helpers (labels, variants, JSON fields)
 lib/seo.ts             shop URLs, titles, JSON-LD
 lib/supabase/          browser.ts, server.ts (RLS as the user), admin.ts (service role, server only), types.ts

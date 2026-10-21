@@ -1,4 +1,4 @@
-import { shopOrigin } from "@/lib/seo";
+import { appOrigin, shopOrigin } from "@/lib/seo";
 
 // Placeholder for the marketing site on the root domain (built later).
 export default function Home() {
@@ -10,12 +10,14 @@ export default function Home() {
       <p className="m-0 text-base text-muted">
         Products, prices aur WhatsApp order — TikTok bio mein ek hi link.
       </p>
-      <a
-        href={shopOrigin("zaibmobiles")}
-        className="flex h-12 items-center self-start rounded-full bg-ink px-5 font-bold text-white"
-      >
-        Demo shop dekhein: Zaib Mobiles
-      </a>
+      <div className="flex flex-wrap gap-2">
+        <a href={shopOrigin("zaibmobiles")} className="flex h-12 items-center rounded-full bg-ink px-5 font-bold text-white">
+          Demo shop dekhein: Zaib Mobiles
+        </a>
+        <a href={`${appOrigin()}/login`} className="flex h-12 items-center rounded-full border border-line-strong px-5 font-bold text-ink">
+          Shopkeeper login
+        </a>
+      </div>
     </main>
   );
 }

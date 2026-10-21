@@ -1,7 +1,7 @@
 // Storefront read API. Every page reads data only through these functions, so swapping the
 // demo source for a real database later touches this file alone.
 //
-// Today: reads the in-memory demo shop (lib/data/demo.ts).
+// Today: reads the in-memory store (lib/data/store.ts), seeded from the demo shop.
 
 import "server-only";
 import { cache } from "react";
@@ -15,7 +15,7 @@ import type {
   Shop,
 } from "@/lib/supabase/types";
 import { conditionLabel, defaultVariant, effectivePrice, specValue } from "@/lib/catalog";
-import * as demo from "./demo";
+import { store } from "./store";
 
 export type ProductFull = Product & {
   category: Category | null;
@@ -39,23 +39,23 @@ const bySort = (a: { sort_order: number | null }, b: { sort_order: number | null
 function full(p: Product): ProductFull {
   return {
     ...p,
-    category: demo.categories.find((c) => c.id === p.category_id) ?? null,
-    images: demo.images.filter((i) => i.product_id === p.id).sort(bySort),
-    variants: demo.variants.filter((v) => v.product_id === p.id).sort(bySort),
+    category: store.categories.find((c) => c.id === p.category_id) ?? null,
+    images: store.images.filter((i) => i.product_id === p.id).sort(bySort),
+    variants: store.variants.filter((v) => v.product_id === p.id).sort(bySort),
   };
 }
 
 function visibleProducts(shopId: string): Product[] {
-  return demo.products.filter((p) => p.shop_id === shopId && p.is_visible);
+  return store.products.filter((p) => p.shop_id === shopId && p.is_visible);
 }
 
 // cache(): layout, generateMetadata and page share one lookup per request.
 export const getShop = cache(async (slug: string): Promise<Shop | null> => {
-  return demo.shops.find((s) => s.slug === slug && s.is_active) ?? null;
+  return store.shops.find((s) => s.slug === slug && s.is_active) ?? null;
 });
 
 export async function getCategories(shopId: string): Promise<Category[]> {
-  return demo.categories.filter((c) => c.shop_id === shopId && c.is_visible).sort(bySort);
+  return store.categories.filter((c) => c.shop_id === shopId && c.is_visible).sort(bySort);
 }
 
 export async function getCategory(shopId: string, slug: string): Promise<Category | null> {
@@ -92,7 +92,7 @@ export async function listProducts(
   });
 }
 
-/** Home tabs: categories marked show_on_home, each with up to `limit` products, featured first. */
+/** Home tabs: non-empty categories marked show_on_home, each with up to `limit` products, featured first. */
 export async function getHomeTabs(shopId: string, limit = 4) {
   const cats = (await getCategories(shopId)).filter((c) => c.show_on_home);
   return Promise.all(
@@ -103,7 +103,7 @@ export async function getHomeTabs(shopId: string, limit = 4) {
       );
       return { category, products: sorted.slice(0, limit), total: items.length };
     }),
-  );
+  ).then((tabs) => tabs.filter((t) => t.total > 0));
 }
 
 /** Distinct brands of visible products, most common first. */
@@ -132,7 +132,7 @@ export async function getReviews(
   shopId: string,
   { type, productId }: { type: Review["type"]; productId?: string },
 ): Promise<Review[]> {
-  const all = demo.reviews
+  const all = store.reviews
     .filter((r) => r.shop_id === shopId && r.is_visible && r.type === type)
     .sort(bySort);
   if (productId) {
@@ -149,7 +149,7 @@ export async function getOrderTarget(shopSlug: string, productId: string, varian
   const product = visibleProducts(shop.id).find((p) => p.id === productId);
   if (!product) return null;
   const variant = variantId
-    ? demo.variants.find((v) => v.id === variantId && v.product_id === product.id)
+    ? store.variants.find((v) => v.id === variantId && v.product_id === product.id)
     : undefined;
   if (variantId && !variant) return null;
   return { shop, product, variant };

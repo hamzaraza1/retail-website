@@ -10,6 +10,9 @@ export function shopOrigin(slug: string): string {
   return `${local ? "http" : "https"}://${slug}.${ROOT_DOMAIN}`;
 }
 
+/** Dashboard / login host, e.g. https://app.yourbrand.pk. */
+export const appOrigin = () => shopOrigin("app");
+
 export function productUrl(shopSlug: string, productSlug: string): string {
   return `${shopOrigin(shopSlug)}/p/${productSlug}`;
 }

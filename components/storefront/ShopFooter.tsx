@@ -1,8 +1,7 @@
 import Link from "next/link";
+import { PLATFORM_NAME } from "@/lib/brand";
 import { whatsappLink } from "@/lib/whatsapp";
 import type { Category, Shop } from "@/lib/supabase/types";
-
-const BRAND = "Shop Builder";
 
 export function ShopFooter({ shop, categories }: { shop: Shop; categories: Category[] }) {
   const year = new Date().getFullYear();
@@ -11,7 +10,7 @@ export function ShopFooter({ shop, categories }: { shop: Shop; categories: Categ
       <span>
         © {year} {shop.name}
       </span>
-      <span>Powered by {BRAND}</span>
+      <span>Powered by {PLATFORM_NAME}</span>
     </div>
   );
 
