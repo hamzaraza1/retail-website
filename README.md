@@ -13,7 +13,7 @@ A multi-tenant shop website builder for local Karachi retailers, starting with m
 | Phase | | |
 |---|---|---|
 | 0 | Setup: Next.js, Tailwind tokens, Supabase clients, schema, RLS, seed | ✅ |
-| 1 | Storefront: subdomain middleware, Home / Category / Product, WhatsApp flow, SEO | ⏳ |
+| 1 | Storefront: subdomain middleware, Home / Category / Product, WhatsApp flow, SEO | ✅ demo data |
 | 2 | Dashboard core | |
 | 3 | Orders, reviews, stats | |
 | 4 | Pilot | |
@@ -22,9 +22,21 @@ A multi-tenant shop website builder for local Karachi retailers, starting with m
 
 ```bash
 npm install
-cp .env.example .env.local      # fill in Supabase URL + keys
 npm run dev
 ```
+
+Then open the demo shop at **http://zaibmobiles.localhost:3000** (Chrome, Edge and Firefox resolve `*.localhost` to your machine). Storefront pages are only served on a shop subdomain.
+
+The storefront currently reads the built-in demo shop from `lib/data/demo.ts`, so no database or `.env.local` is needed to preview it. All reads go through `lib/data/index.ts`; connecting a database later means replacing the bodies of those functions only.
+
+| URL | Page |
+|---|---|
+| `/` | Shop home |
+| `/c/used-phones?brand=apple&pta=non_pta&sort=price_asc` | Category with filters (shareable) |
+| `/p/iphone-13-used` | Product: variants, WhatsApp order |
+| `/products?q=iphone` | Search / all products |
+| `/p/iphone-13-used/og` | Generated link-preview image (used when a product has no photo) |
+| `/sitemap.xml`, `/robots.txt` | Per-shop SEO files |
 
 ### Database
 
@@ -62,7 +74,13 @@ npx supabase gen types typescript --linked > lib/supabase/types.ts
 ## Layout
 
 ```
-app/                   routes (storefront, dashboard and admin arrive in later phases)
+middleware.ts          <shop>.<domain>/… → /s/<shop>/…
+app/s/[shop]/          storefront: home, c/[category], p/[product] (+ og image), products, sitemap, robots
+app/api/order-click/   records a pending order + whatsapp_click (logs only in demo mode)
+components/storefront/ storefront UI
+lib/data/              storefront read API + demo shop data
+lib/catalog.ts         product display helpers (labels, variants, JSON fields)
+lib/seo.ts             shop URLs, titles, JSON-LD
 lib/supabase/          browser.ts, server.ts (RLS as the user), admin.ts (service role, server only), types.ts
 lib/format.ts          formatPrice → "Rs. 148,000", slugify
 lib/whatsapp.ts        number validation, order message, wa.me links
