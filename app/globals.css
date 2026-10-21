@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+/* Design tokens — PLAN.md §6. --accent is overridden per shop from shops.theme_color. */
+:root {
+  --accent: #1d4ed8;
+}
+
+@theme inline {
+  --color-ink: #0f172a;
+  --color-muted: #556070;
+  --color-line: #e5e8ef;
+  --color-line-strong: #c3cad6;
+  --color-soft: #f4f6fa;
+  --color-accent: var(--accent);
+  --color-whatsapp: #0e7a3f;
+  --color-pta-bg: #e4f2ea;
+  --color-pta-fg: #0a5c2f;
+  --color-nonpta-bg: #fcefd9;
+  --color-nonpta-fg: #7a4300;
+  --color-star: #e8a317;
+
+  --font-sans: var(--font-dm-sans);
+  --font-display: var(--font-bricolage);
+
+  --radius-input: 12px;
+  --radius-card: 16px;
+  --radius-card-lg: 24px;
+}
+
+body {
+  background: #ffffff;
+  color: var(--color-ink);
+}

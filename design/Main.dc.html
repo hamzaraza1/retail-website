@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Zaib Mobiles Home</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&amp;family=DM+Sans:wght@400;500;700&amp;display=swap">
+<style>
+body{margin:0;background:#FFFFFF}
+a{color:#0F172A}a:hover{color:#1D4ED8}
+</style>
+</helmet>
+<div style="font-family: 'DM Sans', system-ui, sans-serif; color: #0F172A; background: #FFFFFF; min-height: 100vh">
+
+<header style="border-bottom: 1px solid #E5E8EF; background: #FFFFFF">
+<div style="max-width: 1200px; margin: 0 auto; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap">
+<div style="display: flex; align-items: center; gap: 12px">
+<div style="width: 44px; height: 44px; border-radius: 12px; background: {{accent}}; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 20px">Z</div>
+<div style="display: flex; flex-direction: column">
+<div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 20px; line-height: 1.1">Zaib Mobiles</div>
+<div style="font-size: 13px; color: #556070">New · Used · Accessories</div>
+</div>
+</div>
+<label style="flex: 1 1 260px; max-width: 420px; height: 44px; border-radius: 22px; background: #F4F6FA; display: flex; align-items: center; gap: 8px; padding: 0 16px; box-sizing: border-box">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#556070" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+<input type="search" aria-label="Phone dhoondein" placeholder="iPhone 13, Galaxy A55…" style="flex: 1; min-width: 0; border: 0; background: transparent; font-family: inherit; font-size: 15px; color: #0F172A; outline: none">
+</label>
+<a href="https://wa.me/923000000000" style="height: 44px; padding: 0 16px; border-radius: 22px; background: #0E7A3F; color: #FFFFFF; text-decoration: none; display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 15px">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-5A8.5 8.5 0 1 1 8 19.4L3 21z"></path></svg>
+WhatsApp
+</a>
+</div>
+</header>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: 16px">
+<div style="border-radius: 24px; background: #0F172A; color: #FFFFFF; min-height: 400px; display: flex; flex-wrap: wrap; overflow: hidden">
+<div style="flex: 1 1 420px; padding: 48px 32px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; gap: 18px">
+<div style="align-self: flex-start; padding: 6px 12px; border-radius: 999px; background: #1E293B; font-size: 13px; font-weight: 700; color: #BFD3FF">Har phone check karke diya jata hai</div>
+<h1 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 52px; line-height: 1.02; letter-spacing: -0.02em">Naya ho ya used,<br>sahi phone, sahi price</h1>
+<p style="margin: 0; font-size: 18px; line-height: 1.55; color: #C7CEDA; max-width: 460px">PTA approved aur Non-PTA, dono available. TikTok par jo phone dekha, yahan price ke saath milega. WhatsApp par order karein ya dukaan par aa kar check karein.</p>
+<div style="display: flex; gap: 10px; flex-wrap: wrap">
+<a href="#products" style="height: 50px; padding: 0 22px; border-radius: 25px; background: #FFFFFF; color: #0F172A; text-decoration: none; display: flex; align-items: center; font-weight: 700">Phones dekhein</a>
+<a href="#visit" style="height: 50px; padding: 0 22px; border-radius: 25px; border: 1px solid #3B4658; color: #FFFFFF; text-decoration: none; display: flex; align-items: center; gap: 8px; font-weight: 700">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg>
+Dukaan ka pata
+</a>
+</div>
+</div>
+<div style="flex: 1 1 380px; min-height: 320px; background: #1E293B; display: flex; align-items: center; justify-content: center; color: #94A3B8; font-size: 14px">[Banner image — dashboard se upload]</div>
+</div>
+</section>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: 8px 16px">
+<div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center">
+<span style="font-size: 14px; font-weight: 700; color: #556070; margin-right: 4px">Brands:</span>
+<sc-for list="{{brands}}" as="b" hint-placeholder-count="7">
+<a href="Category.dc.html" style="height: 40px; padding: 0 16px; border-radius: 20px; border: 1px solid #E5E8EF; display: flex; align-items: center; text-decoration: none; font-weight: 500; font-size: 14px">{{b}}</a>
+</sc-for>
+</div>
+</section>
+
+<section id="products" style="max-width: 1200px; margin: 0 auto; padding: 32px 16px 16px; display: flex; flex-direction: column; gap: 20px">
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 34px; letter-spacing: -0.01em">Hamare Products</h2>
+<div role="tablist" style="display: flex; gap: 8px; flex-wrap: wrap; border-bottom: 1px solid #E5E8EF">
+<sc-for list="{{tabs}}" as="t" hint-placeholder-count="3">
+<button type="button" role="tab" aria-selected="{{t.on}}" onClick="{{t.pick}}" style="{{t.style}}">{{t.label}}</button>
+</sc-for>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 24px 16px">
+<sc-for list="{{shown}}" as="p" hint-placeholder-count="4">
+<a href="Product.dc.html" style="text-decoration: none; color: #0F172A; display: flex; flex-direction: column; gap: 10px">
+<div style="position: relative; aspect-ratio: 4 / 5; border-radius: 16px; background: #F4F6FA; display: flex; align-items: center; justify-content: center">
+<div style="position: absolute; top: 10px; left: 10px; display: flex; gap: 6px; flex-wrap: wrap">
+<sc-if value="{{p.pta}}" hint-placeholder-val="{{ false }}"><span style="padding: 4px 8px; border-radius: 6px; background: #E4F2EA; color: #0A5C2F; font-size: 12px; font-weight: 700">PTA</span></sc-if>
+<sc-if value="{{p.nonPta}}" hint-placeholder-val="{{ false }}"><span style="padding: 4px 8px; border-radius: 6px; background: #FCEFD9; color: #7A4300; font-size: 12px; font-weight: 700">Non-PTA</span></sc-if>
+<sc-if value="{{p.cond}}" hint-placeholder-val="{{ false }}"><span style="padding: 4px 8px; border-radius: 6px; background: #FFFFFF; color: #0F172A; font-size: 12px; font-weight: 700">{{p.cond}}</span></sc-if>
+</div>
+<div style="width: 34%; aspect-ratio: 1 / 2; border-radius: 14px; border: 3px solid #C3CAD6; background: #FFFFFF"></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 3px">
+<div style="font-size: 15px; font-weight: 700; line-height: 1.35">{{p.name}}</div>
+<div style="font-size: 13px; color: #556070">{{p.sub}}</div>
+<div style="font-size: 17px; font-weight: 700; margin-top: 2px">{{p.price}}</div>
+</div>
+</a>
+</sc-for>
+</div>
+<a href="Category.dc.html" style="align-self: center; height: 50px; padding: 0 26px; border-radius: 25px; border: 1.5px solid #0F172A; color: #0F172A; text-decoration: none; display: flex; align-items: center; gap: 8px; font-weight: 700">
+{{viewAll}}
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+</a>
+</section>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: 32px 16px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px">
+<div style="padding: 20px; border-radius: 16px; background: #F4F6FA; display: flex; gap: 14px; align-items: flex-start">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0F172A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg>
+<div style="display: flex; flex-direction: column; gap: 4px"><div style="font-weight: 700">Checked phones</div><div style="font-size: 14px; color: #556070; line-height: 1.5">Har used phone ki battery aur parts check.</div></div>
+</div>
+<div style="padding: 20px; border-radius: 16px; background: #F4F6FA; display: flex; gap: 14px; align-items: flex-start">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0F172A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 10h18"></path></svg>
+<div style="display: flex; flex-direction: column; gap: 4px"><div style="font-weight: 700">Shop warranty</div><div style="font-size: 14px; color: #556070; line-height: 1.5">[YOUR WARRANTY, jaise 7 din check warranty]</div></div>
+</div>
+<div style="padding: 20px; border-radius: 16px; background: #F4F6FA; display: flex; gap: 14px; align-items: flex-start">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0F172A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="13" height="10" rx="1"></rect><path d="M15 9h4l3 3v4h-7"></path><circle cx="6" cy="18" r="2"></circle><circle cx="18" cy="18" r="2"></circle></svg>
+<div style="display: flex; flex-direction: column; gap: 4px"><div style="font-weight: 700">Cash on Delivery</div><div style="font-size: 14px; color: #556070; line-height: 1.5">Karachi mein same day, baaqi Pakistan 2-4 din.</div></div>
+</div>
+<div style="padding: 20px; border-radius: 16px; background: #F4F6FA; display: flex; gap: 14px; align-items: flex-start">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0F172A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"></path><path d="M3 4v5h5"></path></svg>
+<div style="display: flex; flex-direction: column; gap: 4px"><div style="font-weight: 700">Exchange offer</div><div style="font-size: 14px; color: #556070; line-height: 1.5">Purana phone de kar naya lein.</div></div>
+</div>
+</div>
+</section>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: 24px 16px; display: flex; flex-direction: column; gap: 20px">
+<div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; flex-wrap: wrap">
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 34px">Customers kya kehte hain</h2>
+<a href="https://www.tiktok.com/" style="font-weight: 700; font-size: 15px">TikTok par video reviews</a>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px">
+<sc-for list="{{reviews}}" as="r" hint-placeholder-count="3">
+<figure style="margin: 0; padding: 22px; border-radius: 18px; border: 1px solid #E5E8EF; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; gap: 2px" role="img" aria-label="5 stars">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="#E8A317" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"></path></svg>
+<svg width="18" height="18" viewBox="0 0 24 24" fill="#E8A317" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"></path></svg>
+<svg width="18" height="18" viewBox="0 0 24 24" fill="#E8A317" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"></path></svg>
+<svg width="18" height="18" viewBox="0 0 24 24" fill="#E8A317" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"></path></svg>
+<svg width="18" height="18" viewBox="0 0 24 24" fill="#E8A317" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"></path></svg>
+</div>
+<blockquote style="margin: 0; font-size: 16px; line-height: 1.6">{{r.text}}</blockquote>
+<figcaption style="display: flex; align-items: center; gap: 10px">
+<div style="width: 40px; height: 40px; border-radius: 50%; background: #E7EEFF; color: #1D4ED8; display: flex; align-items: center; justify-content: center; font-weight: 700">{{r.initial}}</div>
+<div style="display: flex; flex-direction: column"><span style="font-weight: 700; font-size: 14px">{{r.name}}</span><span style="font-size: 13px; color: #556070">{{r.meta}}</span></div>
+</figcaption>
+</figure>
+</sc-for>
+</div>
+</section>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: 24px 16px; display: flex; flex-direction: column; gap: 20px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 34px">Video reviews</h2>
+<p style="margin: 0; color: #556070; font-size: 16px">Asli customers, apne phones ke saath</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px">
+<sc-for list="{{videos}}" as="v" hint-placeholder-count="4">
+<figure style="margin: 0; display: flex; flex-direction: column; gap: 10px">
+<button type="button" aria-label="Video chalayein" style="aspect-ratio: 9 / 16; border-radius: 18px; border: 0; background: #0F172A; color: #FFFFFF; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; font-family: inherit; font-size: 13px; padding: 12px">
+<span style="width: 60px; height: 60px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="#0F172A" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg></span>
+<span style="color: #CBD5E1">[TikTok video]</span>
+</button>
+<figcaption style="display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 700; font-size: 15px">{{v.name}}</span><span style="font-size: 13px; color: #556070">{{v.product}}</span></figcaption>
+</figure>
+</sc-for>
+</div>
+</section>
+
+<section id="visit" style="max-width: 1200px; margin: 0 auto; padding: 24px 16px 48px">
+<div style="border-radius: 24px; background: #F4F6FA; display: flex; flex-wrap: wrap; overflow: hidden">
+<div style="flex: 1 1 380px; padding: 40px 32px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px">
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 34px">Dukaan par aa kar check karein</h2>
+<div style="display: flex; gap: 12px; align-items: flex-start">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0F172A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg>
+<div style="line-height: 1.5; color: #334155">[SHOP NO. / MARKET NAME]<br>Karachi</div>
+</div>
+<div style="display: flex; gap: 12px; align-items: flex-start">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0F172A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+<div style="line-height: 1.5; color: #334155">Roz 12pm se 10pm<br>Jumma: 3pm se 10pm</div>
+</div>
+<div style="display: flex; gap: 10px; flex-wrap: wrap">
+<a href="https://maps.google.com/" style="height: 48px; padding: 0 20px; border-radius: 24px; background: #0F172A; color: #FFFFFF; text-decoration: none; display: flex; align-items: center; font-weight: 700">Google Maps par dekhein</a>
+<a href="tel:+923000000000" style="height: 48px; padding: 0 20px; border-radius: 24px; border: 1px solid #C3CAD6; color: #0F172A; text-decoration: none; display: flex; align-items: center; font-weight: 700">Call karein</a>
+</div>
+</div>
+<div style="flex: 1 1 380px; min-height: 280px; background: #E5E8EF; display: flex; align-items: center; justify-content: center; color: #556070; font-size: 14px">[Google Map embed]</div>
+</div>
+</section>
+
+<footer style="border-top: 1px solid #E5E8EF; background: #FAFBFC">
+<div style="max-width: 1200px; margin: 0 auto; padding: 40px 16px 24px; display: flex; flex-direction: column; gap: 28px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 20px">Zaib Mobiles</div>
+<div style="font-size: 14px; color: #556070; line-height: 1.6">[Shop ke baare mein 1-2 lines, dashboard se edit]</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px; font-size: 14px">
+<div style="font-weight: 700">Categories</div>
+<a href="Category.dc.html">New Phones</a>
+<a href="Category.dc.html">Used Phones</a>
+<a href="Category.dc.html">Accessories</a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px; font-size: 14px">
+<div style="font-weight: 700">Contact</div>
+<a href="https://wa.me/923000000000">WhatsApp: [NUMBER]</a>
+<a href="tel:+923000000000">Phone: [NUMBER]</a>
+<a href="https://www.tiktok.com/">TikTok</a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px; font-size: 14px">
+<div style="font-weight: 700">Policy</div>
+<div style="color: #556070; line-height: 1.6">COD available<br>[Warranty / return policy]</div>
+</div>
+</div>
+<div style="padding-top: 16px; border-top: 1px solid #E5E8EF; font-size: 13px; color: #556070; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap">
+<span>© 2026 Zaib Mobiles</span>
+<span>Powered by [YOUR BRAND]</span>
+</div>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#1D4ED8","options":["#1D4ED8","#0F172A","#B4530A","#9F1D3A"]},"$preview":{"width":1280,"height":3800}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { tab: 'new' };
+  }
+  renderVals() {
+    const accent = this.props.accent ?? '#1D4ED8';
+    const data = {
+      new: [
+        { name: 'Samsung Galaxy A55 5G', sub: '8GB / 256GB · Official', price: 'Rs. 124,999', pta: true },
+        { name: 'Infinix Note 40', sub: '8GB / 256GB · Official', price: 'Rs. 54,999', pta: true },
+        { name: 'Tecno Spark 30', sub: '8GB / 128GB · Official', price: 'Rs. 39,999', pta: true },
+        { name: 'Redmi Note 14', sub: '8GB / 256GB · Official', price: 'Rs. 59,999', pta: true }
+      ],
+      used: [
+        { name: 'iPhone 13', sub: '128GB · Battery 87%', price: 'Rs. 148,000', pta: true, cond: '10/10' },
+        { name: 'iPhone 12 Pro', sub: '256GB · Battery 82%', price: 'Rs. 95,000', nonPta: true, cond: '9/10' },
+        { name: 'Galaxy S22 Ultra', sub: '12GB / 256GB', price: 'Rs. 120,000', pta: true, cond: '9/10' },
+        { name: 'Google Pixel 7', sub: '8GB / 128GB', price: 'Rs. 62,000', nonPta: true, cond: '10/10' }
+      ],
+      acc: [
+        { name: '25W Fast Charger', sub: 'Type-C · 1 saal warranty', price: 'Rs. 3,500' },
+        { name: 'Wireless Earbuds', sub: 'ANC · 30 ghante battery', price: 'Rs. 2,800' },
+        { name: 'iPhone 13 Silicone Cover', sub: '6 colors', price: 'Rs. 1,200' },
+        { name: '10,000mAh Power Bank', sub: '20W fast charging', price: 'Rs. 4,500' }
+      ]
+    };
+    const labels = { new: 'New Phones', used: 'Used Phones', acc: 'Accessories' };
+    const tabs = ['new', 'used', 'acc'].map((id) => {
+      const on = this.state.tab === id;
+      return {
+        label: labels[id],
+        on: on ? 'true' : 'false',
+        pick: () => this.setState({ tab: id }),
+        style: 'height: 48px; padding: 0 18px; background: transparent; border: 0; margin-bottom: -1px; font-family: inherit; font-size: 16px; font-weight: 700; cursor: pointer; ' +
+          (on ? 'color: #0F172A; border-bottom: 3px solid ' + accent : 'color: #556070; border-bottom: 3px solid transparent')
+      };
+    });
+    const reviews = [
+      { text: 'Used iPhone liya tha, bilkul waisa hi nikla jaisa TikTok video mein dikhaya. Battery health bhi same thi.', name: '[Customer naam]', meta: 'Gulshan · iPhone 13', initial: 'A' },
+      { text: 'WhatsApp par order kiya, agle din COD par phone aa gaya. Box pack tha.', name: '[Customer naam]', meta: 'Hyderabad · Galaxy A55', initial: 'S' },
+      { text: 'Dukaan par jaa kar check kiya, purana phone exchange mein diya aur achha rate mila.', name: '[Customer naam]', meta: 'Saddar · Pixel 7', initial: 'F' }
+    ];
+    return {
+      accent,
+      tabs,
+      shown: data[this.state.tab],
+      viewAll: 'Saare ' + labels[this.state.tab] + ' dekhein',
+      brands: ['Apple', 'Samsung', 'Infinix', 'Tecno', 'Xiaomi', 'Vivo', 'Oppo'],
+      reviews,
+      videos: [
+        { name: '[Customer naam]', product: 'iPhone 13 · Used' },
+        { name: '[Customer naam]', product: 'Galaxy A55 · New' },
+        { name: '[Customer naam]', product: 'Pixel 7 · Exchange' },
+        { name: '[Customer naam]', product: 'iPhone 12 Pro · Used' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

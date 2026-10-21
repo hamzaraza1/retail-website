@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Dashboard Add Product</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&amp;family=DM+Sans:wght@400;500;700&amp;display=swap">
+<style>
+body{margin:0;background:#F4F6FA}
+a{color:#0F172A}a:hover{color:#1D4ED8}
+</style>
+</helmet>
+<div style="font-family: 'DM Sans', system-ui, sans-serif; color: #0F172A; background: #F4F6FA; min-height: 100vh; display: flex; flex-wrap: wrap">
+
+<aside style="flex: 1 1 220px; max-width: 100%; background: #0F172A; color: #FFFFFF; padding: 20px 14px; box-sizing: border-box; display: flex; flex-direction: column; gap: 22px">
+<div style="display: flex; align-items: center; gap: 10px; padding: 0 8px">
+<div style="width: 36px; height: 36px; border-radius: 10px; background: {{accent}}; display: flex; align-items: center; justify-content: center; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800">Z</div>
+<div style="display: flex; flex-direction: column"><span style="font-weight: 700">Zaib Mobiles</span><span style="font-size: 12px; color: #94A3B8">Shop dashboard</span></div>
+</div>
+<nav style="display: flex; flex-direction: column; gap: 4px; font-size: 15px">
+<a href="#" style="height: 44px; padding: 0 12px; border-radius: 10px; display: flex; align-items: center; color: #CBD5E1; text-decoration: none">Overview</a>
+<a href="#" aria-current="page" style="height: 44px; padding: 0 12px; border-radius: 10px; display: flex; align-items: center; background: #1E293B; color: #FFFFFF; text-decoration: none; font-weight: 700">Products</a>
+<a href="#" style="height: 44px; padding: 0 12px; border-radius: 10px; display: flex; align-items: center; justify-content: space-between; color: #CBD5E1; text-decoration: none">Orders <span style="padding: 2px 8px; border-radius: 999px; background: #0E7A3F; color: #FFFFFF; font-size: 12px; font-weight: 700">3 naye</span></a>
+<a href="#" style="height: 44px; padding: 0 12px; border-radius: 10px; display: flex; align-items: center; color: #CBD5E1; text-decoration: none">Categories</a>
+<a href="#" style="height: 44px; padding: 0 12px; border-radius: 10px; display: flex; align-items: center; color: #CBD5E1; text-decoration: none">Reviews (text + video)</a>
+<a href="#" style="height: 44px; padding: 0 12px; border-radius: 10px; display: flex; align-items: center; color: #CBD5E1; text-decoration: none">Shop settings</a>
+</nav>
+<a href="Main.dc.html" style="margin-top: auto; height: 44px; padding: 0 12px; border-radius: 10px; border: 1px solid #334155; display: flex; align-items: center; color: #FFFFFF; text-decoration: none; font-size: 14px; font-weight: 700">Apni shop dekhein ↗</a>
+</aside>
+
+<main style="flex: 999 1 560px; min-width: 0; padding: 24px 16px 48px; box-sizing: border-box">
+<div style="max-width: 920px; margin: 0 auto; display: flex; flex-direction: column; gap: 18px">
+
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<div style="font-size: 14px; color: #556070">Products / Naya product</div>
+<h1 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 34px">Naya phone add karein</h1>
+</div>
+<div style="display: flex; gap: 8px">
+<button type="button" style="height: 46px; padding: 0 18px; border-radius: 12px; border: 1px solid #C3CAD6; background: #FFFFFF; font-family: inherit; font-size: 15px; font-weight: 700; color: #0F172A">Draft save</button>
+<button type="button" style="height: 46px; padding: 0 20px; border-radius: 12px; border: 0; background: {{accent}}; font-family: inherit; font-size: 15px; font-weight: 700; color: #FFFFFF">Publish karein</button>
+</div>
+</div>
+
+<section style="padding: 22px; border-radius: 18px; background: #FFFFFF; display: flex; flex-direction: column; gap: 14px">
+<h2 style="margin: 0; font-size: 18px">Photos aur video</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 10px">
+<div style="aspect-ratio: 1 / 1; border-radius: 12px; background: #F4F6FA; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 8px; font-size: 12px; color: #556070">Front · Cover</div>
+<div style="aspect-ratio: 1 / 1; border-radius: 12px; background: #F4F6FA; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 8px; font-size: 12px; color: #556070">Back</div>
+<div style="aspect-ratio: 1 / 1; border-radius: 12px; background: #F4F6FA; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 8px; font-size: 12px; color: #556070">Battery screenshot</div>
+<button type="button" style="aspect-ratio: 1 / 1; border-radius: 12px; border: 2px dashed #C3CAD6; background: #FFFFFF; font-family: inherit; font-size: 14px; font-weight: 700; color: #334155; cursor: pointer">+ Photo add</button>
+</div>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 700">TikTok video link (optional)
+<input type="url" placeholder="https://www.tiktok.com/@…" style="height: 46px; padding: 0 14px; border-radius: 12px; border: 1px solid #C3CAD6; font-family: inherit; font-size: 15px; font-weight: 400">
+<span style="font-size: 13px; font-weight: 400; color: #556070">Yeh video product page ki gallery mein photos ke saath chalegi</span>
+</label>
+</section>
+
+<section style="padding: 22px; border-radius: 18px; background: #FFFFFF; display: flex; flex-direction: column; gap: 14px">
+<h2 style="margin: 0; font-size: 18px">Basic info</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 700">Category
+<select style="height: 46px; padding: 0 12px; border-radius: 12px; border: 1px solid #C3CAD6; font-family: inherit; font-size: 15px; background: #FFFFFF"><option>Used Phones</option><option>New Phones</option><option>Accessories</option></select>
+</label>
+<a href="#" style="font-size: 13px; font-weight: 700; color: {{accent}}">+ Nayi category banayein</a>
+</div>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 700">Brand
+<select style="height: 46px; padding: 0 12px; border-radius: 12px; border: 1px solid #C3CAD6; font-family: inherit; font-size: 15px; background: #FFFFFF"><option>Apple</option><option>Samsung</option><option>Infinix</option><option>Tecno</option><option>Xiaomi</option><option>Vivo</option><option>Oppo</option><option>Google</option><option>Other</option></select>
+</label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 700">Model name
+<input type="text" value="iPhone 13" style="height: 46px; padding: 0 14px; border-radius: 12px; border: 1px solid #C3CAD6; font-family: inherit; font-size: 15px; font-weight: 400">
+</label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 700">Condition
+<select style="height: 46px; padding: 0 12px; border-radius: 12px; border: 1px solid #C3CAD6; font-family: inherit; font-size: 15px; background: #FFFFFF"><option>Used</option><option>New (Box pack)</option><option>Open box</option></select>
+</label>
+</div>
+<div style="padding: 16px; border-radius: 14px; background: #F4F6FA; display: flex; flex-direction: column; gap: 12px">
+<div style="font-size: 13px; font-weight: 700; color: #556070; text-transform: uppercase; letter-spacing: 0.04em">Sirf used phone ke liye</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px">
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 700">Condition rating
+<select style="height: 46px; padding: 0 12px; border-radius: 12px; border: 1px solid #C3CAD6; font-family: inherit; font-size: 15px; background: #FFFFFF"><option>10/10</option><option>9/10</option><option>8/10</option><option>7/10</option></select>
+</label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 700">Battery health %
+<input type="number" value="87" style="height: 46px; padding: 0 14px; border-radius: 12px; border: 1px solid #C3CAD6; font-family: inherit; font-size: 15px; font-weight: 400">
+</label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 700">Repair history
+<input type="text" value="Koi nahi" style="height: 46px; padding: 0 14px; border-radius: 12px; border: 1px solid #C3CAD6; font-family: inherit; font-size: 15px; font-weight: 400">
+</label>
+</div>
+</div>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 700">Description
+<textarea rows="3" style="padding: 12px 14px; border-radius: 12px; border: 1px solid #C3CAD6; font-family: inherit; font-size: 15px; font-weight: 400; resize: vertical">Bilkul saaf phone, koi scratch nahi. Face ID aur True Tone working.</textarea>
+</label>
+</section>
+
+<section style="padding: 22px; border-radius: 18px; background: #FFFFFF; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap">
+<div style="display: flex; flex-direction: column; gap: 2px"><h2 style="margin: 0; font-size: 18px">Variants aur price</h2><span style="font-size: 14px; color: #556070">Har storage aur PTA status ki alag price</span></div>
+<button type="button" style="height: 40px; padding: 0 14px; border-radius: 10px; border: 1px solid #C3CAD6; background: #FFFFFF; font-family: inherit; font-size: 14px; font-weight: 700; color: #0F172A">+ Variant add</button>
+</div>
+<div style="overflow-x: auto">
+<table style="width: 100%; min-width: 560px; border-collapse: collapse; font-size: 15px">
+<thead>
+<tr style="text-align: left; color: #556070; font-size: 13px">
+<th style="padding: 8px 8px 8px 0; font-weight: 700">Storage</th>
+<th style="padding: 8px; font-weight: 700">PTA</th>
+<th style="padding: 8px; font-weight: 700">Price (Rs.)</th>
+<th style="padding: 8px; font-weight: 700">Sale price</th>
+<th style="padding: 8px; font-weight: 700">Stock</th>
+</tr>
+</thead>
+<tbody>
+<sc-for list="{{variants}}" as="v" hint-placeholder-count="4">
+<tr style="border-top: 1px solid #E5E8EF">
+<td style="padding: 10px 8px 10px 0; font-weight: 700">{{v.storage}}</td>
+<td style="padding: 10px 8px">{{v.pta}}</td>
+<td style="padding: 10px 8px"><input type="text" aria-label="Price" value="{{v.price}}" style="width: 110px; height: 40px; padding: 0 10px; border-radius: 10px; border: 1px solid #C3CAD6; font-family: inherit; font-size: 15px"></td>
+<td style="padding: 10px 8px"><input type="text" aria-label="Sale price" placeholder="—" style="width: 110px; height: 40px; padding: 0 10px; border-radius: 10px; border: 1px solid #C3CAD6; font-family: inherit; font-size: 15px"></td>
+<td style="padding: 10px 8px"><span style="{{v.stockStyle}}">{{v.stock}}</span></td>
+</tr>
+</sc-for>
+</tbody>
+</table>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div style="font-size: 14px; font-weight: 700">Colors</div>
+<div style="display: flex; gap: 8px; flex-wrap: wrap">
+<span style="height: 36px; padding: 0 12px; border-radius: 18px; background: #F4F6FA; display: flex; align-items: center; gap: 8px; font-size: 14px"><span style="width: 16px; height: 16px; border-radius: 50%; background: #1F2937"></span>Midnight</span>
+<span style="height: 36px; padding: 0 12px; border-radius: 18px; background: #F4F6FA; display: flex; align-items: center; gap: 8px; font-size: 14px"><span style="width: 16px; height: 16px; border-radius: 50%; background: #F5F0E6; border: 1px solid #C3CAD6"></span>Starlight</span>
+<span style="height: 36px; padding: 0 12px; border-radius: 18px; background: #F4F6FA; display: flex; align-items: center; gap: 8px; font-size: 14px"><span style="width: 16px; height: 16px; border-radius: 50%; background: #2F5D8A"></span>Blue</span>
+<button type="button" style="height: 36px; padding: 0 12px; border-radius: 18px; border: 1px dashed #C3CAD6; background: #FFFFFF; font-family: inherit; font-size: 14px; font-weight: 700; color: #334155">+ Color</button>
+</div>
+</div>
+</section>
+
+<section style="padding: 22px; border-radius: 18px; background: #FFFFFF; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; flex-direction: column; gap: 2px"><h2 style="margin: 0; font-size: 18px">Key features</h2><span style="font-size: 14px; color: #556070">Product page par tick ke saath dikhenge</span></div>
+<sc-for list="{{features}}" as="f" hint-placeholder-count="4">
+<div style="display: flex; gap: 10px; flex-wrap: wrap">
+<input type="text" aria-label="Feature" value="{{f.t}}" style="flex: 1 1 220px; height: 44px; padding: 0 14px; border-radius: 12px; border: 1px solid #C3CAD6; font-family: inherit; font-size: 15px; font-weight: 700">
+<input type="text" aria-label="Feature detail" value="{{f.d}}" style="flex: 2 1 280px; height: 44px; padding: 0 14px; border-radius: 12px; border: 1px solid #C3CAD6; font-family: inherit; font-size: 15px">
+</div>
+</sc-for>
+<button type="button" style="align-self: flex-start; height: 40px; padding: 0 14px; border-radius: 10px; border: 1px dashed #C3CAD6; background: #FFFFFF; font-family: inherit; font-size: 14px; font-weight: 700; color: #334155">+ Feature add</button>
+</section>
+
+<section style="padding: 22px; border-radius: 18px; background: #FFFFFF; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; flex-direction: column; gap: 2px"><h2 style="margin: 0; font-size: 18px">Specifications</h2><span style="font-size: 14px; color: #556070">Brand aur model chunte hi basic specs khud bhar jayengi, aap edit kar sakte hain</span></div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px">
+<sc-for list="{{specs}}" as="s" hint-placeholder-count="4">
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 700">{{s.k}}
+<input type="text" value="{{s.v}}" style="height: 44px; padding: 0 14px; border-radius: 12px; border: 1px solid #C3CAD6; font-family: inherit; font-size: 15px; font-weight: 400">
+</label>
+</sc-for>
+</div>
+</section>
+
+<section style="padding: 22px; border-radius: 18px; background: #FFFFFF; display: flex; flex-direction: column; gap: 14px">
+<h2 style="margin: 0; font-size: 18px">Box aur warranty</h2>
+<fieldset style="margin: 0; padding: 0; border: 0; display: flex; gap: 10px; flex-wrap: wrap">
+<legend style="font-size: 14px; font-weight: 700; margin-bottom: 8px">Phone box ke saath hai?</legend>
+<label style="height: 48px; padding: 0 18px; border-radius: 12px; border: 2px solid #0F172A; display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 700"><input type="radio" name="box" checked>With box</label>
+<label style="height: 48px; padding: 0 18px; border-radius: 12px; border: 1px solid #C3CAD6; display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 700"><input type="radio" name="box">Without box</label>
+</fieldset>
+<fieldset style="margin: 0; padding: 0; border: 0; display: flex; gap: 10px; flex-wrap: wrap">
+<legend style="font-size: 14px; font-weight: 700; margin-bottom: 8px">Saath mein kya milega</legend>
+<label style="height: 44px; padding: 0 14px; border-radius: 12px; border: 1px solid #C3CAD6; display: flex; align-items: center; gap: 8px; font-size: 15px"><input type="checkbox" checked>Cable</label>
+<label style="height: 44px; padding: 0 14px; border-radius: 12px; border: 1px solid #C3CAD6; display: flex; align-items: center; gap: 8px; font-size: 15px"><input type="checkbox">Charger</label>
+<label style="height: 44px; padding: 0 14px; border-radius: 12px; border: 1px solid #C3CAD6; display: flex; align-items: center; gap: 8px; font-size: 15px"><input type="checkbox">Cover</label>
+<label style="height: 44px; padding: 0 14px; border-radius: 12px; border: 1px solid #C3CAD6; display: flex; align-items: center; gap: 8px; font-size: 15px"><input type="checkbox">Bill / receipt</label>
+</fieldset>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 700; max-width: 360px">Warranty
+<select style="height: 46px; padding: 0 12px; border-radius: 12px; border: 1px solid #C3CAD6; font-family: inherit; font-size: 15px; background: #FFFFFF"><option>7 din shop check warranty</option><option>1 mahina shop warranty</option><option>Official brand warranty</option><option>Koi warranty nahi</option></select>
+</label>
+</section>
+
+<section style="padding: 22px; border-radius: 18px; background: #FFFFFF; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; flex-direction: column; gap: 2px"><h2 style="margin: 0; font-size: 18px">SEO (Google search)</h2><span style="font-size: 14px; color: #556070">Khali chhorein toh product ke naam aur description se khud ban jayega</span></div>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 700">
+<span style="display: flex; justify-content: space-between">Meta title <span style="font-weight: 400; color: #556070">48 / 60</span></span>
+<input type="text" value="iPhone 13 Used PTA Approved Price in Karachi" style="height: 46px; padding: 0 14px; border-radius: 12px; border: 1px solid #C3CAD6; font-family: inherit; font-size: 15px; font-weight: 400">
+</label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 700">
+<span style="display: flex; justify-content: space-between">Meta description <span style="font-weight: 400; color: #556070">142 / 160</span></span>
+<textarea rows="3" style="padding: 12px 14px; border-radius: 12px; border: 1px solid #C3CAD6; font-family: inherit; font-size: 15px; font-weight: 400; resize: vertical">Used iPhone 13 128GB, 10/10 condition, battery 87%, PTA approved, box ke saath. Karachi mein COD delivery. Zaib Mobiles se WhatsApp par order karein.</textarea>
+</label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 700">URL
+<span style="height: 46px; border-radius: 12px; border: 1px solid #C3CAD6; display: flex; align-items: center; overflow: hidden">
+<span style="height: 100%; padding: 0 12px; background: #F4F6FA; display: flex; align-items: center; font-size: 14px; font-weight: 400; color: #556070; white-space: nowrap">zaibmobiles.pk/p/</span>
+<input type="text" value="iphone-13-used-pta" aria-label="URL slug" style="flex: 1; min-width: 0; height: 100%; padding: 0 12px; border: 0; font-family: inherit; font-size: 15px; outline: none">
+</span>
+</label>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="font-size: 13px; font-weight: 700; color: #556070; text-transform: uppercase; letter-spacing: 0.04em">Google par aisa dikhega</div>
+<div style="padding: 16px; border-radius: 12px; border: 1px solid #E5E8EF; display: flex; flex-direction: column; gap: 4px; font-family: Arial, sans-serif">
+<span style="font-size: 13px; color: #334155">zaibmobiles.pk › p › iphone-13-used-pta</span>
+<span style="font-size: 19px; color: #1A0DAB">iPhone 13 Used PTA Approved Price in Karachi</span>
+<span style="font-size: 14px; color: #45484F; line-height: 1.5">Used iPhone 13 128GB, 10/10 condition, battery 87%, PTA approved, box ke saath. Karachi mein COD delivery. Zaib Mobiles se WhatsApp par…</span>
+</div>
+</div>
+</section>
+
+<section style="padding: 22px; border-radius: 18px; background: #FFFFFF; display: flex; flex-direction: column; gap: 4px">
+<h2 style="margin: 0 0 8px; font-size: 18px">Shop par kaise dikhe</h2>
+<label style="min-height: 52px; display: flex; align-items: center; justify-content: space-between; gap: 12px; border-bottom: 1px solid #E5E8EF; font-size: 15px"><span><b>Featured</b><br><span style="font-size: 13px; color: #556070">Home page par sabse upar</span></span><input type="checkbox" checked style="width: 22px; height: 22px"></label>
+<label style="min-height: 52px; display: flex; align-items: center; justify-content: space-between; gap: 12px; border-bottom: 1px solid #E5E8EF; font-size: 15px"><span><b>Shop par dikhayein</b><br><span style="font-size: 13px; color: #556070">Band karein toh product chhup jayega, delete nahi hoga</span></span><input type="checkbox" checked style="width: 22px; height: 22px"></label>
+<label style="min-height: 52px; display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 15px"><span><b>Reviews dikhayein</b><br><span style="font-size: 13px; color: #556070">Reviews section se chune hue reviews</span></span><input type="checkbox" checked style="width: 22px; height: 22px"></label>
+</section>
+
+</div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#1D4ED8","options":["#1D4ED8","#0F172A","#B4530A","#9F1D3A"]},"$preview":{"width":1280,"height":2900}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const accent = this.props.accent ?? '#1D4ED8';
+    const inS = 'padding: 4px 10px; border-radius: 999px; background: #E4F2EA; color: #0A5C2F; font-size: 13px; font-weight: 700';
+    const outS = 'padding: 4px 10px; border-radius: 999px; background: #F4F6FA; color: #556070; font-size: 13px; font-weight: 700';
+    return {
+      accent,
+      variants: [
+        { storage: '128GB', pta: 'PTA Approved', price: '148,000', stock: 'In stock', stockStyle: inS },
+        { storage: '128GB', pta: 'Non-PTA', price: '98,000', stock: 'In stock', stockStyle: inS },
+        { storage: '256GB', pta: 'PTA Approved', price: '165,000', stock: 'In stock', stockStyle: inS },
+        { storage: '256GB', pta: 'Non-PTA', price: '112,000', stock: 'Out of stock', stockStyle: outS }
+      ],
+      features: [
+        { t: '6.1" Super Retina XDR display', d: 'OLED screen, dhoop mein bhi saaf' },
+        { t: 'A15 Bionic chip', d: 'Games aur apps mein fast performance' },
+        { t: 'Dual 12MP camera', d: 'Night mode aur Cinematic video' },
+        { t: 'Face ID', d: 'Fully working, tested' }
+      ],
+      specs: [
+        { k: 'Display', v: '6.1 inch OLED' },
+        { k: 'Processor', v: 'A15 Bionic' },
+        { k: 'RAM', v: '4GB' },
+        { k: 'Camera', v: '12MP + 12MP, 12MP front' },
+        { k: 'Battery', v: '3240 mAh' },
+        { k: 'Network', v: '5G' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

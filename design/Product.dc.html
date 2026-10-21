@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>iPhone 13 Product</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&amp;family=DM+Sans:wght@400;500;700&amp;display=swap">
+<style>
+body{margin:0;background:#FFFFFF}
+a{color:#0F172A}a:hover{color:#1D4ED8}
+</style>
+</helmet>
+<div style="font-family: 'DM Sans', system-ui, sans-serif; color: #0F172A; background: #FFFFFF; min-height: 100vh">
+
+<header style="border-bottom: 1px solid #E5E8EF">
+<div style="max-width: 1200px; margin: 0 auto; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px">
+<a href="Category.dc.html" style="height: 44px; display: flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 700">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg>
+Used Phones
+</a>
+<a href="Main.dc.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none">
+<div style="width: 36px; height: 36px; border-radius: 10px; background: {{accent}}; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800">Z</div>
+<div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 18px">Zaib Mobiles</div>
+</a>
+</div>
+</header>
+
+<main style="max-width: 1200px; margin: 0 auto; padding: 24px 16px 32px; display: flex; flex-wrap: wrap; gap: 40px">
+
+<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
+<div style="position: relative; aspect-ratio: 1 / 1; border-radius: 22px; background: #F4F6FA; display: flex; align-items: center; justify-content: center">
+<div style="position: absolute; top: 14px; left: 14px; display: flex; gap: 6px">
+<span style="padding: 5px 10px; border-radius: 6px; background: #FFFFFF; font-size: 13px; font-weight: 700">Used 10/10</span>
+<span style="padding: 5px 10px; border-radius: 6px; background: #FFFFFF; font-size: 13px; font-weight: 700">With box</span>
+</div>
+<sc-if value="{{notVideo}}" hint-placeholder-val="{{ true }}">
+<div style="width: 30%; aspect-ratio: 1 / 2; border-radius: 22px; border: 4px solid #C3CAD6; background: #FFFFFF; display: flex; align-items: center; justify-content: center; color: #556070; font-size: 12px; text-align: center; padding: 8px; box-sizing: border-box">[Photo {{photoNo}}]</div>
+</sc-if>
+<sc-if value="{{isVideo}}" hint-placeholder-val="{{ false }}">
+<div style="height: 92%; aspect-ratio: 9 / 16; border-radius: 18px; background: #0F172A; color: #FFFFFF; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; font-size: 13px; text-align: center; padding: 12px; box-sizing: border-box">
+<span style="width: 64px; height: 64px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg width="26" height="26" viewBox="0 0 24 24" fill="#0F172A" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg></span>
+<span>[TikTok video yahin chalegi]</span>
+</div>
+</sc-if>
+</div>
+<div style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px">
+<sc-for list="{{thumbs}}" as="t" hint-placeholder-count="6">
+<button type="button" onClick="{{t.pick}}" aria-label="{{t.label}}" style="{{t.style}}"><span style="{{t.textStyle}}">{{t.short}}</span></button>
+</sc-for>
+</div>
+</div>
+
+<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 22px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-size: 14px; font-weight: 700; color: {{accent}}; letter-spacing: 0.04em; text-transform: uppercase">Apple · Used</div>
+<h1 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 42px; line-height: 1.05; letter-spacing: -0.01em">iPhone 13</h1>
+<div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap">
+<span style="font-size: 32px; font-weight: 700">{{price}}</span>
+<sc-if value="{{isPta}}" hint-placeholder-val="{{ true }}"><span style="padding: 5px 10px; border-radius: 999px; background: #E4F2EA; color: #0A5C2F; font-size: 13px; font-weight: 700">PTA Approved</span></sc-if>
+<sc-if value="{{isNon}}" hint-placeholder-val="{{ false }}"><span style="padding: 5px 10px; border-radius: 999px; background: #FCEFD9; color: #7A4300; font-size: 13px; font-weight: 700">Non-PTA · SIM nahi chalegi</span></sc-if>
+<span style="padding: 5px 10px; border-radius: 999px; background: #E7EEFF; color: #1E3A8A; font-size: 13px; font-weight: 700">With box</span>
+<span style="padding: 5px 10px; border-radius: 999px; background: #E4F2EA; color: #0A5C2F; font-size: 13px; font-weight: 700">In stock</span>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-weight: 700; font-size: 15px">Storage</div>
+<div style="display: flex; gap: 8px; flex-wrap: wrap">
+<sc-for list="{{storagePills}}" as="s" hint-placeholder-count="2">
+<button type="button" onClick="{{s.pick}}" aria-pressed="{{s.on}}" style="{{s.style}}">{{s.label}}</button>
+</sc-for>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-weight: 700; font-size: 15px">PTA status</div>
+<div style="display: flex; gap: 8px; flex-wrap: wrap">
+<sc-for list="{{ptaPills}}" as="s" hint-placeholder-count="2">
+<button type="button" onClick="{{s.pick}}" aria-pressed="{{s.on}}" style="{{s.style}}">{{s.label}}</button>
+</sc-for>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-weight: 700; font-size: 15px">Available colors</div>
+<div style="display: flex; gap: 14px; flex-wrap: wrap; align-items: center; font-size: 14px">
+<span style="display: flex; align-items: center; gap: 8px"><span style="width: 22px; height: 22px; border-radius: 50%; background: #1F2937"></span>Midnight</span>
+<span style="display: flex; align-items: center; gap: 8px"><span style="width: 22px; height: 22px; border-radius: 50%; background: #F5F0E6; border: 1px solid #C3CAD6"></span>Starlight</span>
+<span style="display: flex; align-items: center; gap: 8px"><span style="width: 22px; height: 22px; border-radius: 50%; background: #2F5D8A"></span>Blue</span>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<a href="{{waHref}}" style="height: 58px; border-radius: 29px; background: #0E7A3F; color: #FFFFFF; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px; font-weight: 700; font-size: 18px">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-5A8.5 8.5 0 1 1 8 19.4L3 21z"></path></svg>
+WhatsApp par Order karein
+</a>
+<a href="tel:+923000000000" style="height: 52px; border-radius: 26px; border: 1px solid #C3CAD6; color: #0F172A; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px; font-weight: 700">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"></path></svg>
+Call karein
+</a>
+<div style="font-size: 13px; color: #556070; text-align: center">Color, delivery aur payment WhatsApp par tay hoga</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div style="font-size: 13px; font-weight: 700; color: #556070; text-transform: uppercase; letter-spacing: 0.04em">Shopkeeper ko yeh message jayega</div>
+<div style="align-self: flex-start; max-width: 360px; padding: 12px 14px; border-radius: 12px 12px 12px 2px; background: #E6F4EA; font-size: 14px; line-height: 1.55; white-space: pre-line">{{waText}}</div>
+</div>
+</div>
+</main>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: 16px; display: flex; flex-direction: column; gap: 18px">
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 30px">Phone ki condition</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px">
+<div style="padding: 18px; border-radius: 16px; background: #F4F6FA; display: flex; flex-direction: column; gap: 6px"><span style="font-size: 13px; color: #556070">Battery health</span><span style="font-size: 26px; font-weight: 800; font-family: 'Bricolage Grotesque', sans-serif">87%</span></div>
+<div style="padding: 18px; border-radius: 16px; background: #F4F6FA; display: flex; flex-direction: column; gap: 6px"><span style="font-size: 13px; color: #556070">Condition</span><span style="font-size: 26px; font-weight: 800; font-family: 'Bricolage Grotesque', sans-serif">10/10</span></div>
+<div style="padding: 18px; border-radius: 16px; background: #F4F6FA; display: flex; flex-direction: column; gap: 6px"><span style="font-size: 13px; color: #556070">Face ID / True Tone</span><span style="font-size: 26px; font-weight: 800; font-family: 'Bricolage Grotesque', sans-serif">Working</span></div>
+<div style="padding: 18px; border-radius: 16px; background: #F4F6FA; display: flex; flex-direction: column; gap: 6px"><span style="font-size: 13px; color: #556070">Repair history</span><span style="font-size: 26px; font-weight: 800; font-family: 'Bricolage Grotesque', sans-serif">Koi nahi</span></div>
+</div>
+</section>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: 24px 16px; display: flex; flex-wrap: wrap; gap: 32px">
+<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 30px">Key features</h2>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<sc-for list="{{features}}" as="f" hint-placeholder-count="5">
+<div style="display: flex; gap: 12px; align-items: flex-start">
+<span style="width: 28px; height: 28px; border-radius: 50%; background: #E7EEFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>
+</span>
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 700">{{f.t}}</span><span style="font-size: 14px; color: #556070; line-height: 1.5">{{f.d}}</span></div>
+</div>
+</sc-for>
+</div>
+<div style="padding: 18px; border-radius: 16px; border: 1px solid #E5E8EF; display: flex; flex-direction: column; gap: 10px">
+<div style="font-weight: 700">Box mein kya milega</div>
+<div style="display: flex; gap: 8px; flex-wrap: wrap; font-size: 14px">
+<span style="padding: 6px 12px; border-radius: 999px; background: #E4F2EA; color: #0A5C2F; font-weight: 700">Phone</span>
+<span style="padding: 6px 12px; border-radius: 999px; background: #E4F2EA; color: #0A5C2F; font-weight: 700">Original box</span>
+<span style="padding: 6px 12px; border-radius: 999px; background: #E4F2EA; color: #0A5C2F; font-weight: 700">Cable</span>
+<span style="padding: 6px 12px; border-radius: 999px; background: #F4F6FA; color: #556070; font-weight: 700; text-decoration: line-through">Charger</span>
+</div>
+<div style="font-size: 14px; color: #556070">Warranty: [7 din shop check warranty]</div>
+</div>
+</div>
+
+<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 30px">Specifications</h2>
+<table style="width: 100%; border-collapse: collapse; font-size: 15px">
+<tbody>
+<sc-for list="{{specs}}" as="s" hint-placeholder-count="8">
+<tr style="border-bottom: 1px solid #E5E8EF">
+<th scope="row" style="text-align: left; padding: 12px 12px 12px 0; color: #556070; font-weight: 500; width: 38%; vertical-align: top">{{s.k}}</th>
+<td style="padding: 12px 0; font-weight: 500">{{s.v}}</td>
+</tr>
+</sc-for>
+</tbody>
+</table>
+</div>
+</section>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: 24px 16px; display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap">
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 30px">Customer reviews</h2>
+<span style="display: flex; align-items: center; gap: 6px; font-weight: 700">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="#E8A317" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"></path></svg>
+4.9 · [reviews count]
+</span>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px">
+<sc-for list="{{reviews}}" as="r" hint-placeholder-count="3">
+<figure style="margin: 0; padding: 22px; border-radius: 18px; border: 1px solid #E5E8EF; display: flex; flex-direction: column; gap: 12px">
+<div style="font-size: 15px; color: #E8A317; letter-spacing: 2px" aria-label="5 stars" role="img">★★★★★</div>
+<blockquote style="margin: 0; font-size: 16px; line-height: 1.6">{{r.text}}</blockquote>
+<figcaption style="display: flex; flex-direction: column"><span style="font-weight: 700; font-size: 14px">{{r.name}}</span><span style="font-size: 13px; color: #556070">{{r.meta}}</span></figcaption>
+</figure>
+</sc-for>
+</div>
+</section>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: 24px 16px 48px; display: flex; flex-direction: column; gap: 18px">
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 30px">Yeh bhi dekhein</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 24px 16px">
+<sc-for list="{{related}}" as="p" hint-placeholder-count="4">
+<a href="Product.dc.html" style="text-decoration: none; color: #0F172A; display: flex; flex-direction: column; gap: 10px">
+<div style="aspect-ratio: 4 / 5; border-radius: 16px; background: #F4F6FA; display: flex; align-items: center; justify-content: center"><div style="width: 34%; aspect-ratio: 1 / 2; border-radius: 14px; border: 3px solid #C3CAD6; background: #FFFFFF"></div></div>
+<div style="font-size: 15px; font-weight: 700">{{p.name}}</div>
+<div style="font-size: 13px; color: #556070">{{p.sub}}</div>
+<div style="font-size: 17px; font-weight: 700">{{p.price}}</div>
+</a>
+</sc-for>
+</div>
+</section>
+
+<footer style="border-top: 1px solid #E5E8EF; background: #FAFBFC">
+<div style="max-width: 1200px; margin: 0 auto; padding: 24px 16px; font-size: 13px; color: #556070; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap">
+<span>© 2026 Zaib Mobiles · [SHOP ADDRESS], Karachi</span>
+<span>Powered by [YOUR BRAND]</span>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#1D4ED8","options":["#1D4ED8","#0F172A","#B4530A","#9F1D3A"]},"$preview":{"width":1280,"height":2900}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { photo: 0, storage: '128GB', pta: 'PTA' };
+  }
+  renderVals() {
+    const accent = this.props.accent ?? '#1D4ED8';
+    const prices = {
+      '128GB|PTA': 'Rs. 148,000', '128GB|Non-PTA': 'Rs. 98,000',
+      '256GB|PTA': 'Rs. 165,000', '256GB|Non-PTA': 'Rs. 112,000'
+    };
+    const { storage, pta, photo } = this.state;
+    const price = prices[storage + '|' + pta];
+    const pill = (on) => 'height: 46px; min-width: 88px; padding: 0 18px; border-radius: 12px; font-family: inherit; font-size: 15px; font-weight: 700; cursor: pointer; ' +
+      (on ? 'background: #0F172A; color: #FFFFFF; border: 1.5px solid #0F172A' : 'background: #FFFFFF; color: #0F172A; border: 1.5px solid #C3CAD6');
+    const storagePills = ['128GB', '256GB'].map((s) => ({ label: s, on: storage === s ? 'true' : 'false', style: pill(storage === s), pick: () => this.setState({ storage: s }) }));
+    const ptaPills = [['PTA', 'PTA Approved'], ['Non-PTA', 'Non-PTA']].map(([id, label]) => ({ label, on: pta === id ? 'true' : 'false', style: pill(pta === id), pick: () => this.setState({ pta: id }) }));
+    const names = ['Front', 'Back', 'Side', 'Battery', 'Box', '▶ Video'];
+    const thumbs = names.map((n, i) => {
+      const vid = i === names.length - 1;
+      return {
+        label: vid ? 'TikTok video' : n + ' photo', short: n,
+        pick: () => this.setState({ photo: i }),
+        textStyle: 'font-size: 11px; font-weight: 700; color: ' + (vid ? '#FFFFFF' : '#556070'),
+        style: 'aspect-ratio: 1 / 1; border-radius: 12px; cursor: pointer; padding: 0; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 6px; background: ' + (vid ? '#0F172A' : '#F4F6FA') + '; border: ' + (i === photo ? '2px solid ' + accent : '1px solid #E5E8EF')
+      };
+    });
+    const waText = 'Assalam o Alaikum! Mujhe yeh phone chahiye:\n\niPhone 13 (' + storage + ', ' + pta + ')\n' + price + '\nzaibmobiles.aapkabrand.pk/p/iphone-13';
+    return {
+      accent, price, storagePills, ptaPills, thumbs,
+      photoNo: names[photo],
+      isVideo: photo === names.length - 1, notVideo: photo !== names.length - 1,
+      isPta: pta === 'PTA', isNon: pta !== 'PTA',
+      waText,
+      waHref: 'https://wa.me/923000000000?text=' + encodeURIComponent(waText),
+      features: [
+        { t: '6.1" Super Retina XDR display', d: 'OLED screen, dhoop mein bhi saaf' },
+        { t: 'A15 Bionic chip', d: 'Games aur apps mein fast performance' },
+        { t: 'Dual 12MP camera', d: 'Night mode aur Cinematic video' },
+        { t: '5G support', d: 'Future ke networks ke liye tayyar' },
+        { t: 'Face ID', d: 'Fully working, tested' }
+      ],
+      specs: [
+        { k: 'Display', v: '6.1 inch OLED' },
+        { k: 'Processor', v: 'A15 Bionic' },
+        { k: 'Storage', v: storage },
+        { k: 'Camera', v: '12MP + 12MP, 12MP front' },
+        { k: 'Battery health', v: '87%' },
+        { k: 'PTA status', v: pta === 'PTA' ? 'Approved' : 'Non-PTA (sirf WiFi)' },
+        { k: 'Condition', v: 'Used 10/10, koi scratch nahi' },
+        { k: 'Box', v: 'With box (original)' },
+        { k: 'Warranty', v: '[7 din shop check warranty]' }
+      ],
+      reviews: [
+        { text: 'Phone bilkul waisa hi tha jaisa video mein dikhaya. Battery health bhi same nikli.', name: '[Customer naam]', meta: 'Gulshan · iPhone 13' },
+        { text: 'WhatsApp par baat ki, agle din COD par mil gaya. Packing achhi thi.', name: '[Customer naam]', meta: 'Hyderabad · iPhone 13' },
+        { text: 'Dukaan par jaa kar check kiya, Face ID aur camera sab theek. Recommended.', name: '[Customer naam]', meta: 'Saddar · iPhone 12 Pro' }
+      ],
+      related: [
+        { name: 'iPhone 12 Pro', sub: '256GB · Non-PTA', price: 'Rs. 95,000' },
+        { name: 'iPhone 11', sub: '64GB · PTA', price: 'Rs. 72,000' },
+        { name: 'Galaxy S22 Ultra', sub: '256GB · PTA', price: 'Rs. 120,000' },
+        { name: 'iPhone 13 Silicone Cover', sub: '6 colors', price: 'Rs. 1,200' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
